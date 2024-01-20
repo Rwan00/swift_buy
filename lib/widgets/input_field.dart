@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 
-class InputField extends StatelessWidget {
+class InputField extends StatefulWidget {
   final String title;
   final String hint;
   final TextEditingController? controller;
   final Widget? widget;
   final TextInputType? textType;
+  final bool isPassword;
 
   const InputField(
       {required this.title,
@@ -17,8 +18,15 @@ class InputField extends StatelessWidget {
       this.controller,
       this.widget,
       this.textType,
+      this.isPassword = false,
       super.key});
 
+  @override
+  State<InputField> createState() => _InputFieldState();
+}
+
+class _InputFieldState extends State<InputField> {
+  bool showPwd = false;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -29,7 +37,7 @@ class InputField extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              title,
+              widget.title,
               style: titleStyle,
             ),
             const SizedBox(
@@ -42,14 +50,25 @@ class InputField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: TextFormField(
-                controller: controller,
-                keyboardType: textType,
+                obscuringCharacter: "♡",
+                obscureText: widget.isPassword && !showPwd,
+                controller: widget.controller,
+                keyboardType: widget.textType,
                 autofocus: false,
                 style: titleStyle,
                 cursorColor: primaryPurple,
                 decoration: InputDecoration(
-                  suffixIcon: widget,
-                  hintText: hint,
+                  suffixIcon: widget.isPassword
+                ? IconButton(
+                    onPressed: () {
+                      setState(() {
+                        showPwd = !showPwd;
+                      });
+                    },
+                    icon:
+                        Icon(showPwd ? Icons.visibility_outlined : Icons.visibility_off_outlined))
+                : widget.widget,
+                  hintText: widget.hint,
                   hintStyle: subTitle,
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),

@@ -8,7 +8,7 @@ import '../methods/methods.dart';
 import '../models/onboarding_model.dart';
 import '../theme/body_theme.dart';
 import '../widgets/onboarding_widget.dart';
-import 'login_screen.dart';
+import 'sign_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
