@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../methods/methods.dart';
 import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 import 'input_field.dart';
 
-Widget register(void Function() onPressed,BuildContext context) {
+Widget register(void Function() onPressed, BuildContext context) {
   TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -39,30 +40,34 @@ Widget register(void Function() onPressed,BuildContext context) {
               textAlign: TextAlign.center,
             ),
           ),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               InputField(
                 title: 'User Name',
                 hint: 'Enter Your Name',
+                controller: usernameController,
               ),
               InputField(
                 title: 'Email Address',
                 hint: 'xyz@gmail.com',
+                controller: emailController,
               ),
               InputField(
                 title: 'Password',
                 hint: '******',
-                widget: Icon(Icons.remove_red_eye_outlined),
+                widget: const Icon(Icons.remove_red_eye_outlined),
                 textType: TextInputType.visiblePassword,
                 isPassword: true,
+                controller: passwordController,
               ),
               InputField(
                 title: 'Confirm Password',
                 hint: '******',
-                widget: Icon(Icons.remove_red_eye_outlined),
+                widget: const Icon(Icons.remove_red_eye_outlined),
                 textType: TextInputType.visiblePassword,
                 isPassword: true,
+                controller: confirmPasswordController,
               ),
             ],
           ),
@@ -75,41 +80,20 @@ Widget register(void Function() onPressed,BuildContext context) {
             child: ElevatedButton(
                 onPressed: () {
                   if (emailController.text.isEmpty ||
-                      passwordController.text.isEmpty||
-                      usernameController.text.isEmpty||
-                      confirmPasswordController.text.isEmpty
-                      ) {
-                    final snackBar = SnackBar(
-                      padding: const EdgeInsets.all(0.0),
-                      margin: const EdgeInsets.all(10),
-                      behavior: SnackBarBehavior.floating,
-                      elevation: 0,
-                      backgroundColor: Colors.black,
-                      content: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            // height: 70,
-                            // width: 200,
-
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
-                              child: Text(
-                                "Required All Fields!",
-                                style: subTitle.copyWith(color: Colors.white),
-                              ),
-                            )),
-                      ),
-                      action: SnackBarAction(
-                        label: '',
-                        onPressed: () {},
-                      ),
-                    );
-
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      passwordController.text.isEmpty ||
+                      usernameController.text.isEmpty ||
+                      confirmPasswordController.text.isEmpty) {
+                    buildSnackBar(context, "Required All Fields!!");
+                  } else if (!emailController.text.contains("@")) {
+                    buildSnackBar(context, "Invalid Email");
+                  } else if (passwordController.text.length < 5) {
+                    buildSnackBar(context, "Password is Too Short");
+                  } else if (confirmPasswordController.text !=
+                      passwordController.text) {
+                    buildSnackBar(context, "Password Didn't Match!");
+                  }
+                  else{
+                    
                   }
                 },
                 style: ButtonStyle(
