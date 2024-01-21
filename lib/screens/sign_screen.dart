@@ -25,7 +25,7 @@ String form = "Login";
   
 
   Widget renderWidget() {
-    return form == "Login" ? login(updateWidget) : register(updateWidget);
+    return form == "Login" ? login(updateWidget,context) : register(updateWidget,context);
   }
 
   void updateWidget() {
