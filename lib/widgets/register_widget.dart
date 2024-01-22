@@ -5,14 +5,21 @@ import '../methods/methods.dart';
 import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 import 'input_field.dart';
+import 'my_btn.dart';
 
-Widget register(void Function() onPressed, BuildContext context) {
-  TextEditingController usernameController = TextEditingController();
+
+
+class RegisterWidget extends StatelessWidget {
+  final void Function() onPressed;
+  const RegisterWidget({required this.onPressed,super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-
-  return Container(
+    return  Container(
     //height:300,
     decoration: const BoxDecoration(
       color: Colors.white,
@@ -77,37 +84,27 @@ Widget register(void Function() onPressed, BuildContext context) {
           SizedBox(
             width: double.infinity,
             height: 45,
-            child: ElevatedButton(
-                onPressed: () {
-                  if (emailController.text.isEmpty ||
-                      passwordController.text.isEmpty ||
-                      usernameController.text.isEmpty ||
-                      confirmPasswordController.text.isEmpty) {
-                    buildSnackBar(context, "Required All Fields!!");
-                  } else if (!emailController.text.contains("@")) {
-                    buildSnackBar(context, "Invalid Email");
-                  } else if (passwordController.text.length < 5) {
-                    buildSnackBar(context, "Password is Too Short");
-                  } else if (confirmPasswordController.text !=
-                      passwordController.text) {
-                    buildSnackBar(context, "Password Didn't Match!");
-                  }
-                  else{
-                    
-                  }
-                },
-                style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all(Colors.white),
-                    textStyle: MaterialStateProperty.all(
-                        GoogleFonts.raleway(fontSize: 16)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            16.0), // Adjust the radius here
-                      ),
-                    ),
-                    backgroundColor: MaterialStateProperty.all(primaryPurple)),
-                child: const Text("Sign Up")),
+            child: AppBtn(
+              label: "Sign Up",
+              onPressed: () {
+                if (emailController.text.isEmpty ||
+                    passwordController.text.isEmpty ||
+                    usernameController.text.isEmpty ||
+                    confirmPasswordController.text.isEmpty) {
+                  buildSnackBar(context, "Required All Fields!!");
+                } else if (!emailController.text.contains("@")) {
+                  buildSnackBar(context, "Invalid Email");
+                } else if (passwordController.text.length < 5) {
+                  buildSnackBar(context, "Password is Too Short");
+                } else if (confirmPasswordController.text !=
+                    passwordController.text) {
+                  buildSnackBar(context, "Password Didn't Match!");
+                }
+                else{
+
+                }
+              },
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -129,4 +126,5 @@ Widget register(void Function() onPressed, BuildContext context) {
       ),
     ),
   );
+  }
 }
