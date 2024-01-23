@@ -17,9 +17,10 @@ class LoginWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
-    return BlocConsumer<ShopLoginCubit, ShopLogingState>(
+    return BlocConsumer<ShopLoginCubit, ShopLoginState>(
       listener: (context, state) {},
       builder: (context, state) {
+        var cubit = ShopLoginCubit.get(context);
         return Container(
           //height:300,
           decoration: const BoxDecoration(
@@ -61,9 +62,9 @@ class LoginWidget extends StatelessWidget {
                       title: 'Password',
                       hint: '******',
                       isPassword: true,
-                      widget: const Icon(Icons.remove_red_eye_outlined),
                       textType: TextInputType.visiblePassword,
                       controller: passwordController,
+                      
                     ),
                     const SizedBox(
                       height: 6,
@@ -84,7 +85,7 @@ class LoginWidget extends StatelessWidget {
                   width: double.infinity,
                   height: 45,
                   child: ConditionalBuilder(
-                    condition: state is! ShopLogingLoadingState,
+                    condition: state is! ShopLoginLoadingState,
                     builder: (context) => AppBtn(
                       label: 'Sign In',
                       onPressed: () {

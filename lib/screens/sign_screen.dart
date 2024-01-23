@@ -24,8 +24,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget renderWidget() {
     return form == "Login"
-        ? LoginWidget(onPressed: updateWidget,)
-        : RegisterWidget(onPressed: updateWidget,);
+        ? LoginWidget(
+            onPressed: updateWidget,
+          )
+        : RegisterWidget(
+            onPressed: updateWidget,
+          );
   }
 
   void updateWidget() {
@@ -38,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ShopLoginCubit(),
-      child: BlocConsumer<ShopLoginCubit, ShopLogingState>(
+      child: BlocConsumer<ShopLoginCubit, ShopLoginState>(
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
@@ -77,8 +81,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   /*const SizedBox(
-                        height:64,
-                      )*/
+                          height:64,
+                        )*/
                 ],
               ));
         },

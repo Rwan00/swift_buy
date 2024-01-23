@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swift_buy_/cubits/sign_cubit/sign_cubit.dart';
+import 'package:swift_buy_/cubits/sign_cubit/sign_state.dart';
 import 'cubits/bloc_observer.dart';
 import 'helper/dio_helper.dart';
 import 'theme/body_theme.dart';
@@ -16,11 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       theme: BodyTheme.light,
-      home:  splashScreen(),
+      home: splashScreen(),
     );
   }
 }
-

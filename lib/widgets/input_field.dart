@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swift_buy_/cubits/sign_cubit/sign_cubit.dart';
+import 'package:swift_buy_/cubits/sign_cubit/sign_state.dart';
 
 import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 
-class InputField extends StatefulWidget {
+class InputField extends StatelessWidget {
   final String title;
   final String hint;
   final TextEditingController? controller;
@@ -22,71 +24,74 @@ class InputField extends StatefulWidget {
       super.key});
 
   @override
-  State<InputField> createState() => _InputFieldState();
-}
-
-class _InputFieldState extends State<InputField> {
-  bool showPwd = false;
-  @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.title,
-              style: titleStyle,
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Container(
-              height: 50,
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: TextFormField(
-                obscuringCharacter: "♡",
-                obscureText: widget.isPassword && !showPwd,
-                controller: widget.controller,
-                keyboardType: widget.textType,
-                autofocus: false,
-                style: titleStyle,
-                cursorColor: primaryPurple,
-                decoration: InputDecoration(
-                  suffixIcon: widget.isPassword
-                ? IconButton(
-                    onPressed: () {
-                      setState(() {
-                        showPwd = !showPwd;
-                      });
-                    },
-                    icon:
-                        Icon(showPwd ? Icons.visibility_outlined : Icons.visibility_off_outlined))
-                : widget.widget,
-                  hintText: widget.hint,
-                  hintStyle: subTitle,
-                  enabledBorder: OutlineInputBorder(
+
+    return BlocProvider(
+      create: (context) => ShopLoginCubit(),
+      child: BlocConsumer<ShopLoginCubit, ShopLoginState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var cubit = ShopLoginCubit.get(context);
+          bool showPwd = cubit.showPwd;
+          return Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: titleStyle,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(
-                        color: lightPurple,
-                        style: BorderStyle.solid,
-                        width: 1,
-                      )),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(
-                        color: primaryDeepPurple,
-                        width: 1,
-                      )),
-                ),
-              ),
-            ),
-          ],
-        ));
+                    ),
+                    child: TextFormField(
+                      obscuringCharacter: "♡",
+                      obscureText: isPassword && !showPwd,
+                      controller: controller,
+                      keyboardType: textType,
+                      autofocus: false,
+                      style: titleStyle,
+                      cursorColor: primaryPurple,
+                      decoration: InputDecoration(
+                        suffixIcon: isPassword
+                            ? IconButton(
+                                onPressed: () {
+                                  cubit.changePasswordVisibility();
+                                },
+                                icon: cubit.icon,
+                              )
+                            : widget,
+                        hintText: hint,
+                        hintStyle: subTitle,
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(
+                              color: lightPurple,
+                              style: BorderStyle.solid,
+                              width: 1,
+                            )),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(
+                              color: primaryDeepPurple,
+                              width: 1,
+                            )),
+                      ),
+                    ),
+                  ),
+                ],
+              ));
+        },
+      ),
+    );
   }
 }
