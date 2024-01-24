@@ -84,22 +84,6 @@ class RegisterWidget extends StatelessWidget {
             child: AppBtn(
               label: "Sign Up",
               onPressed: () {
-                if (emailController.text.isEmpty ||
-                    passwordController.text.isEmpty ||
-                    usernameController.text.isEmpty ||
-                    confirmPasswordController.text.isEmpty) {
-                  buildSnackBar(context, "Required All Fields!!");
-                } else if (!emailController.text.contains("@")) {
-                  buildSnackBar(context, "Invalid Email");
-                } else if (passwordController.text.length < 5) {
-                  buildSnackBar(context, "Password is Too Short");
-                } else if (confirmPasswordController.text !=
-                    passwordController.text) {
-                  buildSnackBar(context, "Password Didn't Match!");
-                }
-                else{
-
-                }
               },
             ),
           ),

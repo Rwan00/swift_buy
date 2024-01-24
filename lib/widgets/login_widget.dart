@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swift_buy_/theme/body_theme.dart';
 
 import '../cubits/sign_cubit/sign_cubit.dart';
 import '../cubits/sign_cubit/sign_state.dart';
@@ -19,7 +20,15 @@ class LoginWidget extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     return BlocConsumer<ShopLoginCubit, ShopLoginState>(
       listener: (context, state) {
-
+        if(state is ShopLoginSuccessState){
+           if(state.loginModel.status){
+             print(state.loginModel.message);
+             buildSnackBar(context, state.loginModel.message,primaryDeepPurple);
+           }
+           else{
+             buildSnackBar(context, state.loginModel.message,Color.fromARGB(255, 92, 1, 1));
+           }
+        }
       },
       builder: (context, state) {
         var cubit = ShopLoginCubit.get(context);
@@ -91,7 +100,9 @@ class LoginWidget extends StatelessWidget {
                     builder: (context) => AppBtn(
                       label: 'Sign In',
                       onPressed: () {
-
+                        cubit.userLogin(
+                            email: emailController.text,
+                            password: passwordController.text);
                       },
                     ),
                     fallback: (context) =>

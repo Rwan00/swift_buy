@@ -1,28 +1,28 @@
 class ShopLoginModel {
    final bool status;
-   String message;
+   final String message;
    UserData? data;
 
   ShopLoginModel({required this.status, required this.message, this.data});
 
- factory ShopLoginModel.fromJson(Map<String,dynamic> json){
+ factory ShopLoginModel.fromJson(Map<String,dynamic>? json){
    return ShopLoginModel(
-       status : json["status"],
-       message : json["message"],
-       data : UserData.fromJson(json["data"]),
+       status : json?["status"],
+       message : json?["message"],
+       data : UserData.fromJson(json?["data"]),
    );
   }
 }
 
 class UserData {
-  final int id;
-  final String name;
-  final String email;
-  final String phone;
-  final String image;
-  final int points;
-  final int credit;
-  final String token;
+  final int? id;
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? image;
+  final int? points;
+  final int? credit;
+  final String? token;
 
   UserData({
     required this.id,
@@ -35,16 +35,16 @@ class UserData {
     required this.token,
   });
 
-  factory UserData.fromJson(Map<String,dynamic> json){
+  factory UserData.fromJson(Map<String,dynamic>? json){
     return UserData(
-        id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        phone: json["phone"],
-        image: json["image"],
-        points: json["points"],
-        credit: json["credit"],
-        token: json["token"],
+        id: json?["id"],
+        name: json?["name"],
+        email: json?["email"],
+        phone: json?["phone"],
+        image: json?["image"],
+        points: json?["points"],
+        credit: json?["credit"],
+        token: json?["token"],
     );
   }
 }

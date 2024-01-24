@@ -36,30 +36,16 @@ void animatedNavigateAndDelete(BuildContext context, Widget widget,
       (Route<dynamic> route) => false);}
 
 
-  SnackBar buildSnackBar(BuildContext context,String text) {
+  SnackBar buildSnackBar(BuildContext context,String text,Color clr) {
     final snackBar = SnackBar(
-      padding: const EdgeInsets.all(0.0),
-      margin: const EdgeInsets.all(10),
+      //padding: const EdgeInsets.all(0.0),
+      //margin: const EdgeInsets.all(10),
       behavior: SnackBarBehavior.floating,
       elevation: 0,
-      backgroundColor: Colors.black,
-      content: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Container(
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            // height: 70,
-            // width: 200,
-
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Text(
-                text,
-                style: subTitle.copyWith(color: Colors.white),
-              ),
-            )),
+      backgroundColor: clr,
+      content: Text(
+        text,
+        style: subTitle.copyWith(color: Colors.white),
       ),
       action: SnackBarAction(
         label: '',
