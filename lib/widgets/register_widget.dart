@@ -32,9 +32,6 @@ class RegisterWidget extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       child: Column(
         children: [
-          const SizedBox(
-            height: 16,
-          ),
           Text(
             "Register Account",
             style: heading,

@@ -12,31 +12,8 @@ import '../widgets/input_field.dart';
 import '../widgets/login_widget.dart';
 import '../widgets/register_widget.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  String form = "Login";
-
-  Widget renderWidget() {
-    return form == "Login"
-        ? LoginWidget(
-            onPressed: updateWidget,
-          )
-        : RegisterWidget(
-            onPressed: updateWidget,
-          );
-  }
-
-  void updateWidget() {
-    setState(() {
-      form = form == "Login" ? "Register" : "Login";
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocConsumer<ShopLoginCubit, ShopLoginState>(
         listener: (context, state) {},
         builder: (context, state) {
+          var cubit = ShopLoginCubit.get(context);
           return Scaffold(
               backgroundColor: primaryPurple,
               body: Column(
@@ -56,26 +34,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   Center(
                       child: Image.asset(
                     "assets/images/logo.png",
-                    height: 190,
+                    height: 210,
                   )),
                   Expanded(
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Column(
-                          children: [
-                            AnimatedSwitcher(
-                              switchInCurve: Curves.bounceInOut,
-                              switchOutCurve: Curves.easeOutCirc,
-                              transitionBuilder:
-                                  (Widget child, Animation<double> animation) {
-                                return ScaleTransition(
-                                    scale: animation, child: child);
-                              },
-                              duration: const Duration(seconds: 3),
-                              child: renderWidget(),
-                            ),
-                          ],
+                    child: Center(
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Column(
+                            children: [
+                              AnimatedSwitcher(
+                                switchInCurve: Curves.easeInOutCirc,
+                                switchOutCurve: Curves.easeOutCirc,
+                                transitionBuilder:
+                                    (Widget child, Animation<double> animation) {
+                                  return ScaleTransition(
+                                      scale: animation, child: child);
+                                },
+                                duration: const Duration(seconds: 1),
+                                child: cubit.renderWidget(),
+                              ),
+                              const SizedBox(height: 32,)
+                            ],
+                          ),
                         ),
                       ),
                     ),

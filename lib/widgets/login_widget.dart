@@ -18,7 +18,9 @@ class LoginWidget extends StatelessWidget {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     return BlocConsumer<ShopLoginCubit, ShopLoginState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+
+      },
       builder: (context, state) {
         var cubit = ShopLoginCubit.get(context);
         return Container(
@@ -64,7 +66,7 @@ class LoginWidget extends StatelessWidget {
                       isPassword: true,
                       textType: TextInputType.visiblePassword,
                       controller: passwordController,
-                      
+
                     ),
                     const SizedBox(
                       height: 6,
@@ -89,16 +91,7 @@ class LoginWidget extends StatelessWidget {
                     builder: (context) => AppBtn(
                       label: 'Sign In',
                       onPressed: () {
-                        if (emailController.text.isEmpty ||
-                            passwordController.text.isEmpty) {
-                          buildSnackBar(context, "Required All Fields!!");
-                        } else if (!emailController.text.contains("@")) {
-                          buildSnackBar(context, "Invalid Email");
-                        } else {
-                          ShopLoginCubit.get(context).userLogin(
-                              email: emailController.text,
-                              password: passwordController.text);
-                        }
+
                       },
                     ),
                     fallback: (context) =>
