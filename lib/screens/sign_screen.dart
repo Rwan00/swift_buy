@@ -24,7 +24,7 @@ class SignScreen extends StatelessWidget {
         builder: (context, state) {
           var cubit = ShopLoginCubit.get(context);
           return Scaffold(
-              backgroundColor: primaryPurple,
+              backgroundColor: primaryDeepPurple,
               body: Column(
                 //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -34,7 +34,7 @@ class SignScreen extends StatelessWidget {
                   Center(
                       child: Image.asset(
                     "assets/images/logo.png",
-                    height: 210,
+                    height: 190,
                   )),
                   Expanded(
                     child: Center(

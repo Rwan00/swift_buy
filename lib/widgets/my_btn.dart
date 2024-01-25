@@ -22,7 +22,7 @@ class AppBtn extends StatelessWidget {
                     BorderRadius.circular(16.0), 
               ),
             ),
-            backgroundColor: MaterialStateProperty.all(primaryPurple)),
+            backgroundColor: MaterialStateProperty.all(lightPurple)),
         child:  Text(label));
   }
 }

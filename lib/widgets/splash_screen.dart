@@ -7,18 +7,14 @@ import '../theme/body_theme.dart';
 
 EasySplashScreen splashScreen(navigator) {
   return EasySplashScreen(
-    logo: Image.asset("assets/images/logo.png",height: 320,),
+    logo: Image.asset("assets/images/logo.png",height: 520,width: 520,),
     logoWidth: 170,
 
-    backgroundColor: primaryPurple,
+    backgroundColor: primaryDeepPurple,
     showLoader: true,
 
     loaderColor: Colors.white,
     navigator:  navigator,
     durationInSeconds: 5,
-    title:  Text(
-      "Swift Buy",
-      style: GoogleFonts.raleway(color: Colors.white,fontSize: 45,fontWeight: FontWeight.w700),
-    ),
   );
 }
