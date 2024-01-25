@@ -1,6 +1,9 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:swift_buy_/helper/cache_helper.dart';
+import 'package:swift_buy_/screens/home_screen.dart';
 import 'package:swift_buy_/theme/body_theme.dart';
 
 import '../cubits/sign_cubit/sign_cubit.dart';
@@ -23,11 +26,21 @@ class LoginWidget extends StatelessWidget {
         if(state is ShopLoginSuccessState){
            if(state.loginModel.status){
              print(state.loginModel.message);
-             buildSnackBar(context, state.loginModel.message,primaryDeepPurple);
-           }
+            buildSnackBar(context, state.loginModel.message, primaryDeepPurple);
+            CacheHelper.saveData(
+                    key: "token", value: state.loginModel.data!.token)
+                .then((value) {
+              animatedNavigateAndDelete(
+                  context: context,
+                  widget: const HomeScreen(),
+                  direction: PageTransitionType.fade,
+                  curve: Curves.easeInOutBack);
+            });
+          }
            else{
-             buildSnackBar(context, state.loginModel.message,Color.fromARGB(255, 92, 1, 1));
-           }
+             buildSnackBar(context, state.loginModel.message,
+                const Color.fromARGB(255, 92, 1, 1));
+          }
         }
       },
       builder: (context, state) {

@@ -22,8 +22,11 @@ void animatedNavigateTo(BuildContext context, Widget widget,
       ));
 }
 
-void animatedNavigateAndDelete(BuildContext context, Widget widget,
-    PageTransitionType direction, Curve curve) {
+void animatedNavigateAndDelete(
+    {required BuildContext context,
+   required Widget widget,
+    required PageTransitionType direction,
+    required Curve curve}) {
   Navigator.pushAndRemoveUntil(
       context,
       PageTransition(

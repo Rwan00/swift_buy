@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 import 'fonts.dart';
 
@@ -8,15 +8,11 @@ Color lightPurple = const Color.fromRGBO(177, 155, 217,1);
 Color primaryDeepPurple = const Color.fromARGB(255, 45, 1, 51);
 class BodyTheme {
   static final light = ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.grey[200],
     appBarTheme: AppBarTheme(
         titleSpacing: 20,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark,
-        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[200],
         elevation: 0,
         titleTextStyle: heading,
         iconTheme: const IconThemeData(color: Colors.black)),
@@ -30,10 +26,6 @@ class BodyTheme {
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: AppBarTheme(
         titleSpacing: 20,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.black,
-          statusBarIconBrightness: Brightness.light,
-        ),
         centerTitle: true,
         backgroundColor: Colors.black,
         elevation: 0,
