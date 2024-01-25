@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
-
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:swift_buy_/helper/cashe_helper.dart';
 
 import '../methods/methods.dart';
 import '../models/onboarding_model.dart';
@@ -28,8 +28,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         actions: [
           TextButton(
               onPressed: () {
-                animatedNavigateAndDelete(context, const LoginScreen(),
-                    PageTransitionType.leftToRight, Curves.easeInOutCirc);
+                CacheHelper.saveData(key: "onBoarding", value: true)
+                    .then((value) {
+                  if (value == true) {
+                    animatedNavigateAndDelete(context, const SignScreen(),
+                        PageTransitionType.leftToRight, Curves.easeInOutCirc);
+                  }
+                });
               },
               child: Text(
                 "SKIP",
@@ -84,7 +89,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               FloatingActionButton(
                 onPressed: () {
                   isLast
-                      ? animatedNavigateAndDelete(context, const LoginScreen(),
+                      ? animatedNavigateAndDelete(context, const SignScreen(),
                           PageTransitionType.leftToRight, Curves.easeInOutCirc)
                       : boardController.nextPage(
                           duration: const Duration(milliseconds: 900),

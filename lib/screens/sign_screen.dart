@@ -12,8 +12,8 @@ import '../widgets/input_field.dart';
 import '../widgets/login_widget.dart';
 import '../widgets/register_widget.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignScreen extends StatelessWidget {
+  const SignScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
