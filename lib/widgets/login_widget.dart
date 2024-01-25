@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:swift_buy_/helper/cache_helper.dart';
-import 'package:swift_buy_/screens/home_screen.dart';
+import 'package:swift_buy_/screens/shop_layout.dart';
 import 'package:swift_buy_/theme/body_theme.dart';
 
 import '../cubits/sign_cubit/sign_cubit.dart';
@@ -32,7 +32,7 @@ class LoginWidget extends StatelessWidget {
                 .then((value) {
               animatedNavigateAndDelete(
                   context: context,
-                  widget: const HomeScreen(),
+                  widget: const ShopLayout(),
                   direction: PageTransitionType.fade,
                   curve: Curves.easeInOutBack);
             });

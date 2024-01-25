@@ -9,11 +9,13 @@ Color primaryDeepPurple = const Color.fromARGB(255, 45, 1, 51);
 class BodyTheme {
   static final light = ThemeData(
     scaffoldBackgroundColor: Colors.grey[200],
+
     bottomNavigationBarTheme:  BottomNavigationBarThemeData(
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: primaryDeepPurple,
-        elevation: 20),
+        selectedItemColor: lightPurple,
+      elevation: 16,
+    ),
     appBarTheme: AppBarTheme(
         titleSpacing: 20,
         centerTitle: true,
@@ -24,7 +26,7 @@ class BodyTheme {
     colorScheme: ColorScheme.fromSeed(
         seedColor: const Color.fromRGBO(159, 145, 204, 1),
         primary: const Color.fromRGBO(61, 36, 108, 1)),
-    useMaterial3: true,
+    useMaterial3: false,
   );
 
   static final dark = ThemeData(
