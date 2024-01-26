@@ -11,6 +11,7 @@ import 'package:swift_buy_/screens/on_boarding.dart';
 import 'package:swift_buy_/screens/sign_screen.dart';
 import 'cubits/bloc_observer.dart';
 import 'helper/dio_helper.dart';
+import 'helper/end_points.dart';
 import 'theme/body_theme.dart';
 import 'widgets/splash_screen.dart';
 
@@ -20,7 +21,7 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   bool onBoarding = CacheHelper.getData(key: "onBoarding") ?? false;
-  String? token = CacheHelper.getData(key: "token");
+  token = CacheHelper.getData(key: "token");
   Widget widget;
 
   if (onBoarding) {

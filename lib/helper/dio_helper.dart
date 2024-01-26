@@ -7,9 +7,6 @@ class DioHelper {
     dio = Dio(BaseOptions(
       baseUrl: "https://student.valuxapps.com/api/",
       receiveDataWhenStatusError: true,
-      headers: {
-        "Content-Type" : "application/json",
-      },
     ));
   }
 
@@ -20,6 +17,7 @@ class DioHelper {
     String? token,
   }) async {
     dio!.options.headers = {
+      "Content-Type" : "application/json",
       "lang": lang,
       "Authorization": token,
     };
@@ -34,6 +32,7 @@ class DioHelper {
     String? token,
   })async {
     dio!.options.headers = {
+      "Content-Type" : "application/json",
       "lang": lang,
       "Authorization": token,
     };

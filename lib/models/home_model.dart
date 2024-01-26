@@ -13,18 +13,31 @@ class HomeModel {
 }
 
 class HomeDataModel {
-  final List<BannerModel> banners = [];
-  final List<ProductModel> products = [];
+  final List<BannerModel> banners;
+  final List<ProductModel> products;
 
-  HomeDataModel.fromJson(Map<String, dynamic> json) {
-    json["banners"].forEach((element) {
-      banners.add(element);
-    });
-    json["products"].forEach((element) {
-      products.add(element);
-    });
+  HomeDataModel({required this.banners, required this.products});
+
+  factory HomeDataModel.fromJson(Map<String, dynamic> json) {
+    List<BannerModel> banners = [];
+    List<ProductModel> products = [];
+
+    if (json["banners"] != null) {
+      banners = List<BannerModel>.from(
+        json["banners"].map((banner) => BannerModel.fromJson(banner)),
+      );
+    }
+
+    if (json["products"] != null) {
+      products = List<ProductModel>.from(
+        json["products"].map((product) => ProductModel.fromJson(product)),
+      );
+    }
+
+    return HomeDataModel(banners: banners, products: products);
   }
 }
+
 
 class BannerModel {
   final int id;
