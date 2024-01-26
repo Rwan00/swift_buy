@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
+import 'package:swift_buy_/helper/dio_helper.dart';
+import 'package:swift_buy_/helper/end_points.dart';
+import 'package:swift_buy_/models/home_model.dart';
 import 'package:swift_buy_/screens/favourites_screen.dart';
 import 'package:swift_buy_/screens/home_screen.dart';
 import 'package:swift_buy_/screens/notification_screen.dart';
@@ -52,4 +55,20 @@ class ShopCubit extends Cubit<ShopStates>{
         ),
         label: ''),
   ];
+
+
+  HomeModel? homeModel;
+
+  void getHomeData(){
+
+    emit(ShopLoadingHomeDataState());
+    DioHelper.getData(url: HOME).then((value) {
+      homeModel = HomeModel.fromJson(value.data);
+      print(homeModel.toString());
+      emit(ShopSuccessHomeDataState());
+    }).catchError((error){
+      print(error.toString());
+      emit(ShopErrorHomeDataState());
+    });
+  }
 }

@@ -60,19 +60,32 @@ class ShopLayout extends StatelessWidget {
             onPressed: () {},
             child: const Icon(Icons.shopping_bag_outlined),
           ),
-          bottomNavigationBar: BottomAppBar(
-            clipBehavior: Clip.hardEdge,
-            shape: const CircularNotchedRectangle(),
-            notchMargin: 10,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: BottomNavigationBar(
-                currentIndex: cubit.currentIndex,
-                onTap: (index) {
-                  cubit.changeBottom(index);
-                },
-                elevation: 0,
-                items:  cubit.bottomItems,
+          bottomNavigationBar: Container(
+
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+              boxShadow: [
+                BoxShadow(color: Colors.black12, spreadRadius: 0, blurRadius: 10),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
+              ),
+              child: BottomAppBar(
+                clipBehavior: Clip.hardEdge,
+                shape: const CircularNotchedRectangle(),
+                notchMargin: 8,
+                child: BottomNavigationBar(
+                  currentIndex: cubit.currentIndex,
+                  onTap: (index) {
+                    cubit.changeBottom(index);
+                  },
+                  elevation: 0,
+                  items: cubit.bottomItems,
+                ),
               ),
             ),
           ),
