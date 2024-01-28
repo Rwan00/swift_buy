@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:swift_buy_/models/home_model.dart';
+import 'package:swift_buy_/theme/body_theme.dart';
 import 'package:swift_buy_/theme/fonts.dart';
 import 'package:swift_buy_/widgets/divide.dart';
 
@@ -62,7 +63,23 @@ class ProductsBuilder extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("${model.data.products[index].discount}%",style: titleStyle,),
+                          Container(
+                            height:25,
+                            width: 50,
+                            decoration:BoxDecoration(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(70),
+                                bottomRight: Radius.circular(70),
+                              ),
+                              color: primaryDeepPurple
+                            ),
+                              child: Center(
+                                  child: Text(
+                                    "-${model.data.products[index].discount}%",
+                                    style: titleStyle.copyWith(color: Colors.white),
+                                  ),
+                              ),
+                          ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: Image.network(
@@ -94,16 +111,34 @@ class ProductsBuilder extends StatelessWidget {
                             ],
                           ),
 
-                          Spacer(),
-                          Row(
+                          const Spacer(),
+                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Icon(Icons.add),
-                              Spacer(),
-                              Icon(Icons.favorite)
+                              const Icon(Icons.favorite_outline_sharp),
+                              const Spacer(),
+                              Container(
+                                height:25,
+                                width: 50,
+                                decoration:BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(70),
+                                      bottomRight: Radius.circular(70),
+                                    ),
+                                    color: primaryDeepPurple
+                                ),
+                                  child: const Center(
+                                      child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                      ),
+                                  ),
+                              ),
+
                             ],
-                          )
+                          ),
+                          const SizedBox(height: 25,)
                         ],
                       ),
                     ),
