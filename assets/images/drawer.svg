@@ -1,0 +1,7 @@
+<svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Hamburger">
+<rect id="Top line" x="9" y="1" width="16" height="2" rx="1" fill="#2B2B2B"/>
+<rect id="Middle line" x="2" y="8" width="23" height="2" rx="1" fill="#2B2B2B"/>
+<rect id="Bottom line" x="2" y="15" width="11" height="2" rx="1" fill="#0D6EFD"/>
+</g>
+</svg>
