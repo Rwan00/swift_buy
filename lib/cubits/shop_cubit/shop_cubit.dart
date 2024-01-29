@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
@@ -74,5 +76,20 @@ class ShopCubit extends Cubit<ShopStates>{
       print(error.toString());
       emit(ShopErrorHomeDataState());
     });
+  }
+
+  bool visible = true;
+
+  void changeVisibility(){
+    visible = !visible;
+    emit(ShopChangeVisibilityState());
+  }
+
+
+  bool isTapped = false;
+  double angle =  0;
+  void rotate(){
+    isTapped = !isTapped;
+    angle = isTapped ?4.71238898038469: 0;
   }
 }

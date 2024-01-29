@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:swift_buy_/cubits/shop_cubit/shop_cubit.dart';
 import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
 import 'package:swift_buy_/theme/body_theme.dart';
@@ -21,35 +22,18 @@ class ShopLayout extends StatelessWidget {
             actions: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  width: 50,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                  child: const Center(
-                    child: Icon(
-                      Icons.shopping_bag_outlined,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+
               ),
             ],
             leading: Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Container(
-                  width: 70,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                  child: Center(
-                      child: Icon(
-                    Icons.menu_open_outlined,
-                    color: primaryDeepPurple,
-                    size: 26,
-                  ))),
+              child:  SvgPicture.asset(
+                "assets/images/drawer.svg",
+                height: 18,
+                width: 25,
+                colorFilter:  ColorFilter.mode(
+                    lightPurple, BlendMode.srcATop),
+              ),
             ),
           ),
           body: cubit.bottomScreen[cubit.currentIndex],
