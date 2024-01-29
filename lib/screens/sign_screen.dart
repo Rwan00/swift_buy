@@ -1,16 +1,13 @@
-import 'dart:math';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:swift_buy_/cubits/sign_cubit/sign_cubit.dart';
 
 import '../cubits/sign_cubit/sign_state.dart';
 import '../theme/body_theme.dart';
-import '../theme/fonts.dart';
-import '../widgets/input_field.dart';
-import '../widgets/login_widget.dart';
-import '../widgets/register_widget.dart';
+
 
 class SignScreen extends StatelessWidget {
   const SignScreen({super.key});

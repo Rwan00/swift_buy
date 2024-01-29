@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swift_buy_/cubits/shop_cubit/shop_cubit.dart';
 import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
-import 'package:swift_buy_/cubits/sign_cubit/sign_cubit.dart';
-import 'package:swift_buy_/cubits/sign_cubit/sign_state.dart';
+
 import 'package:swift_buy_/helper/cache_helper.dart';
-import 'package:swift_buy_/models/onboarding_model.dart';
+
 import 'package:swift_buy_/screens/shop_layout.dart';
 import 'package:swift_buy_/screens/on_boarding.dart';
 import 'package:swift_buy_/screens/sign_screen.dart';

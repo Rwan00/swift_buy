@@ -91,5 +91,6 @@ class ShopCubit extends Cubit<ShopStates>{
   void rotate(){
     isTapped = !isTapped;
     angle = isTapped ?4.71238898038469: 0;
+    emit(ShopRotateState());
   }
 }

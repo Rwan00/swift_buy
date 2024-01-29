@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../methods/methods.dart';
-import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 import 'input_field.dart';
 import 'my_btn.dart';

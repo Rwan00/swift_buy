@@ -1,8 +1,6 @@
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../screens/on_boarding.dart';
 import '../theme/body_theme.dart';
 
 EasySplashScreen splashScreen(navigator) {
