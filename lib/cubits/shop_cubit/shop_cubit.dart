@@ -11,6 +11,8 @@ import 'package:swift_buy_/screens/home_screen.dart';
 import 'package:swift_buy_/screens/notification_screen.dart';
 import 'package:swift_buy_/screens/profile_screen.dart';
 
+import '../../models/categories_model.dart';
+
 class ShopCubit extends Cubit<ShopStates>{
   ShopCubit():super(ShopInitialState());
   static ShopCubit get(context) => BlocProvider.of(context);
@@ -75,6 +77,21 @@ class ShopCubit extends Cubit<ShopStates>{
     }).catchError((error){
       print(error.toString());
       emit(ShopErrorHomeDataState());
+    });
+  }
+
+  CategoriesModel? categoriesModel;
+  void getCategoriesData(){
+    DioHelper.getData(
+        url: CATEGORIES,
+      token: token
+    ).then((value) {
+      categoriesModel = CategoriesModel.fromJson(value.data);
+      print(categoriesModel?.data.dataModel);
+      emit(ShopSuccessCategoriesState());
+    }).catchError((error){
+      print(error);
+      emit(ShopErrorCategoriesState());
     });
   }
 

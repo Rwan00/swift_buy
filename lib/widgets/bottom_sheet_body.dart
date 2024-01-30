@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swift_buy_/cubits/shop_cubit/shop_cubit.dart';
+import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
+
 import 'package:swift_buy_/theme/body_theme.dart';
 import 'package:swift_buy_/theme/fonts.dart';
 
@@ -7,40 +11,52 @@ class BottomSheetBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (context,index){
-        return Container(
-          color: Colors.grey[300],
-          padding: EdgeInsets.all(8),
-
-          child: Card(
-            shadowColor: lightPurple,
-            elevation: 10,
-            child: Row(
-
-              children: [
-                SizedBox(
-                  height: 87,
-                  width: 137,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(30)),
-                    child: FadeInImage(
-                      placeholder: const AssetImage(
-                          "assets/images/sign.jpg"),
-                      image: NetworkImage(
-                          "https://student.valuxapps.com/storage/uploads/categories/1630142480dvQxx.3658058.jpg"
+    return BlocConsumer<ShopCubit, ShopStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var cubit = ShopCubit.get(context);
+        var model = cubit.categoriesModel?.data.dataModel;
+        return ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          itemCount: model?.length,
+          itemBuilder: (context, index) {
+            return Container(
+              color: Colors.grey[300],
+              padding: const EdgeInsets.all(8),
+              child: Card(
+                shadowColor: lightPurple,
+                elevation: 10,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      height: 87,
+                      width: 137,
+                      child: ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(30)),
+                        child: FadeInImage(
+                          placeholder:
+                              const AssetImage("assets/images/sign.jpg"),
+                          image: NetworkImage(
+                            model![index].image
+                              ),
+                        ),
                       ),
                     ),
-                  ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      model[index].name,
+                      style: titleStyle,
+                    ),
+                    const Spacer(),
+                    const Icon(Icons.arrow_forward_ios)
+                  ],
                 ),
-                SizedBox(width: 10,),
-                Text("Electronics",style: titleStyle,),
-                Spacer(),
-                Icon(Icons.arrow_forward_ios)
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
       },
     );

@@ -26,6 +26,7 @@ class CategoriesDataModel {
   factory CategoriesDataModel.fromJson(Map<String, dynamic> json) {
     List<DataModel> dataModel = [];
 
+
     if (json["data"] != null) {
       dataModel = List<DataModel>.from(
         json["data"].map((data) => DataModel.fromJson(data)),
