@@ -21,6 +21,7 @@ void main() async {
   await CacheHelper.init();
   bool onBoarding = CacheHelper.getData(key: "onBoarding") ?? false;
   token = CacheHelper.getData(key: "token");
+  print(token);
   Widget widget;
 
   if (onBoarding) {

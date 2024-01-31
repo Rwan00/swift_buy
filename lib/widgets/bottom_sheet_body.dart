@@ -6,6 +6,8 @@ import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
 import 'package:swift_buy_/theme/body_theme.dart';
 import 'package:swift_buy_/theme/fonts.dart';
 
+
+
 class BottomSheetBody extends StatelessWidget {
   const BottomSheetBody({super.key});
 
@@ -18,41 +20,43 @@ class BottomSheetBody extends StatelessWidget {
         var model = cubit.categoriesModel?.data.dataModel;
         return ListView.builder(
           physics: const BouncingScrollPhysics(),
-          itemCount: model?.length,
+          itemCount: model!.length,
           itemBuilder: (context, index) {
-            return Container(
-              color: Colors.grey[300],
-              padding: const EdgeInsets.all(8),
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Card(
                 shadowColor: lightPurple,
                 elevation: 10,
-                child: Row(
-                  children: [
-                    SizedBox(
-                      height: 87,
-                      width: 137,
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(30)),
-                        child: FadeInImage(
-                          placeholder:
-                              const AssetImage("assets/images/sign.jpg"),
-                          image: NetworkImage(
-                            model![index].image
-                              ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        height: 87,
+                        width: 137,
+                        child: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(30)),
+                          child: FadeInImage(
+                            placeholder:
+                                const AssetImage("assets/images/sign.jpg"),
+                            image: NetworkImage(
+                              model[index].image
+                                ),
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      model[index].name,
-                      style: titleStyle,
-                    ),
-                    const Spacer(),
-                    const Icon(Icons.arrow_forward_ios)
-                  ],
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        model[index].name,
+                        style: titleStyle,
+                      ),
+                      const Spacer(),
+                      const Icon(Icons.arrow_forward_ios)
+                    ],
+                  ),
                 ),
               ),
             );

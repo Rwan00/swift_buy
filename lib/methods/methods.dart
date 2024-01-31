@@ -39,7 +39,7 @@ void animatedNavigateAndDelete(
       (Route<dynamic> route) => false);}
 
 
-  SnackBar buildSnackBar(BuildContext context,String text,Color clr) {
+  SnackBar buildSnackBar({required BuildContext context, required String text, required Color clr}) {
     final snackBar = SnackBar(
       //padding: const EdgeInsets.all(0.0),
       //margin: const EdgeInsets.all(10),

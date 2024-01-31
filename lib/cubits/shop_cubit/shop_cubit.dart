@@ -12,6 +12,7 @@ import 'package:swift_buy_/screens/notification_screen.dart';
 import 'package:swift_buy_/screens/profile_screen.dart';
 
 import '../../models/categories_model.dart';
+import '../../models/favorites_model.dart';
 
 class ShopCubit extends Cubit<ShopStates>{
   ShopCubit():super(ShopInitialState());
@@ -62,6 +63,7 @@ class ShopCubit extends Cubit<ShopStates>{
 
 
   HomeModel? homeModel;
+  Map<int,bool> favorites = {};
 
   void getHomeData(){
 
@@ -73,6 +75,13 @@ class ShopCubit extends Cubit<ShopStates>{
       homeModel = HomeModel.fromJson(value.data);
       print(homeModel?.data.banners[0].image);
       print(homeModel?.status);
+
+      homeModel?.data.products.forEach((element) {
+        favorites.addAll({
+          element.id:element.isFav
+        });
+      });
+      print(favorites.toString());
       emit(ShopSuccessHomeDataState());
     }).catchError((error){
       print(error.toString());
@@ -92,6 +101,31 @@ class ShopCubit extends Cubit<ShopStates>{
     }).catchError((error){
       print(error);
       emit(ShopErrorCategoriesState());
+    });
+  }
+
+
+  ChangeFavoritesModel? favModel;
+  void changeFavourites(int productId){
+    favorites[productId] = !favorites[productId]!;
+    emit(ShopSuccessFavouriteState());
+    DioHelper.postData(
+        url: FAVORITES,
+        data: {
+          "product_id":productId,
+        },
+      token: token,
+    ).then((value) {
+      favModel = ChangeFavoritesModel.fromJson(value.data);
+      print(value.data);
+      if(!favModel!.status){
+        favorites[productId] = !favorites[productId]!;
+      }
+      emit(ShopSuccessChangeFavouritesState(favModel: favModel!));
+    }).catchError((error){
+      favorites[productId] = !favorites[productId]!;
+      print(error.toString());
+      emit(ShopErrorChangeFavouritesState());
     });
   }
 
