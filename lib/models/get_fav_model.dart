@@ -54,7 +54,6 @@ class Product {
   final dynamic discount;
   final String image;
   final String name;
-  final bool isFav;
 
   Product(
       {required this.id,
@@ -63,7 +62,7 @@ class Product {
       required this.discount,
       required this.image,
       required this.name,
-      required this.isFav});
+ });
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
@@ -71,7 +70,6 @@ class Product {
       image: json["image"],
       name: json["name"],
       discount: json["discount"],
-      isFav: json["in_favorites"],
       oldPrice: json["old_price"],
       price: json["price"],
     );

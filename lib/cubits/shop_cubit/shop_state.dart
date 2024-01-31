@@ -12,6 +12,11 @@ class ShopErrorHomeDataState extends ShopStates{}
 class ShopSuccessCategoriesState extends ShopStates{}
 class ShopErrorCategoriesState extends ShopStates{}
 
+class ShopSuccessGetFavState extends ShopStates{}
+class ShopErrorGetFavState extends ShopStates{}
+
+
+
 class ShopSuccessChangeFavouritesState extends ShopStates{
   final ChangeFavoritesModel favModel;
   ShopSuccessChangeFavouritesState({required this.favModel});

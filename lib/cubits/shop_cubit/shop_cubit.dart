@@ -13,6 +13,7 @@ import 'package:swift_buy_/screens/profile_screen.dart';
 
 import '../../models/categories_model.dart';
 import '../../models/favorites_model.dart';
+import '../../models/get_fav_model.dart';
 
 class ShopCubit extends Cubit<ShopStates>{
   ShopCubit():super(ShopInitialState());
@@ -126,6 +127,21 @@ class ShopCubit extends Cubit<ShopStates>{
       favorites[productId] = !favorites[productId]!;
       print(error.toString());
       emit(ShopErrorChangeFavouritesState());
+    });
+  }
+
+  GetFaModel? getFavModel;
+  void getFavData(){
+    DioHelper.getData(
+        url: FAVORITES,
+        token: token
+    ).then((value) {
+      getFavModel = GetFaModel.fromJson(value.data);
+      print(value.data.toString());
+      emit(ShopSuccessGetFavState());
+    }).catchError((error){
+      print(error);
+      emit(ShopErrorGetFavState());
     });
   }
 
