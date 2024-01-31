@@ -54,7 +54,10 @@ class BottomSheetBody extends StatelessWidget {
                         style: titleStyle,
                       ),
                       const Spacer(),
-                      const Icon(Icons.arrow_forward_ios)
+                       CircleAvatar(
+                        backgroundColor: Colors.grey[300],
+                          child: Icon(Icons.arrow_forward_ios,color: primaryDeepPurple,),
+                      ),
                     ],
                   ),
                 ),

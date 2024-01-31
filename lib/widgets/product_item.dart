@@ -95,9 +95,12 @@ class ProductItem extends StatelessWidget {
                         onPressed: () {
                           cubit.changeFavourites(model.id);
                         },
-                        icon: Icon(
-                          isFav ? Icons.favorite : Icons.favorite_outline_sharp,
-                          color: primaryDeepPurple,
+                        icon: CircleAvatar(
+                          backgroundColor: Colors.grey[200],
+                          child: Icon(
+                            isFav ? Icons.favorite : Icons.favorite_outline_sharp,
+                            color: primaryDeepPurple,
+                          ),
                         ),
                       ),
                       const Spacer(),
