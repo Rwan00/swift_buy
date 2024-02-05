@@ -14,7 +14,6 @@ class ShopLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    token = CacheHelper.getData(key: "token");
     print(token);
     return BlocProvider(
       create: (context) => ShopCubit()..getHomeData()..getCategoriesData()..getFavData(),

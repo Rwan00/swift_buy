@@ -20,11 +20,13 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   bool onBoarding = CacheHelper.getData(key: "onBoarding") ?? false;
-
+  print(token);
   Widget widget;
 
   if (onBoarding) {
-    widget = token != null ? const ShopLayout() : const SignScreen();
+    token = CacheHelper.getData(key: "token");
+    print(token);
+    widget =  const ShopLayout() ;
   } else {
     widget = const OnBoardingScreen();
   }
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ShopCubit(),
+      create: (context) => ShopCubit()..getHomeData()..getCategoriesData(),
       child: BlocConsumer<ShopCubit, ShopStates>(
         listener: (context, state) {},
         builder: (context, state) {
