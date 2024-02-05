@@ -20,8 +20,7 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   bool onBoarding = CacheHelper.getData(key: "onBoarding") ?? false;
-  token = CacheHelper.getData(key: "token");
-  print(token);
+
   Widget widget;
 
   if (onBoarding) {
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ShopCubit()..getHomeData()..getCategoriesData()..getFavData(),
+      create: (context) => ShopCubit(),
       child: BlocConsumer<ShopCubit, ShopStates>(
         listener: (context, state) {},
         builder: (context, state) {

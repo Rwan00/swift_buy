@@ -92,8 +92,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               FloatingActionButton(
                 onPressed: () {
                   isLast
-                      ? animatedNavigateAndDelete(context: context,widget: const SignScreen(),
-                         direction:  PageTransitionType.leftToRight,curve:  Curves.easeInOutCirc)
+                      ?  CacheHelper.saveData(key: "onBoarding", value: true)
+                      .then((value) {
+                    if (value == true) {
+                      animatedNavigateAndDelete(context: context, widget: const SignScreen(),
+                          direction:  PageTransitionType.leftToRight, curve:Curves.easeInOutCirc);
+                    }
+                  })
                       : boardController.nextPage(
                           duration: const Duration(milliseconds: 900),
                           curve: Curves.easeInOutBack);
