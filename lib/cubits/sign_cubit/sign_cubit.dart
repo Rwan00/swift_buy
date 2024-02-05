@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swift_buy_/cubits/sign_cubit/sign_state.dart';
-import 'package:swift_buy_/helper/dio_helper.dart';
-import 'package:swift_buy_/models/login_model.dart';
 
+
+import '../../helper/dio_helper.dart';
 import '../../helper/end_points.dart';
+import '../../models/login_model.dart';
 import '../../widgets/login_widget.dart';
 import '../../widgets/register_widget.dart';
+import 'sign_state.dart';
 
 class ShopLoginCubit extends Cubit<ShopLoginState> {
   ShopLoginCubit() : super(ShopLoginInitialState());

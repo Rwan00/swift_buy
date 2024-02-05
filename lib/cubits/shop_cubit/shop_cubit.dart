@@ -2,18 +2,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
-import 'package:swift_buy_/helper/dio_helper.dart';
-import 'package:swift_buy_/helper/end_points.dart';
-import 'package:swift_buy_/models/home_model.dart';
-import 'package:swift_buy_/screens/favourites_screen.dart';
-import 'package:swift_buy_/screens/home_screen.dart';
-import 'package:swift_buy_/screens/notification_screen.dart';
-import 'package:swift_buy_/screens/profile_screen.dart';
 
+
+import '../../helper/dio_helper.dart';
+import '../../helper/end_points.dart';
 import '../../models/categories_model.dart';
 import '../../models/favorites_model.dart';
 import '../../models/get_fav_model.dart';
+import '../../models/home_model.dart';
+import '../../screens/favourites_screen.dart';
+import '../../screens/home_screen.dart';
+import '../../screens/notification_screen.dart';
+import '../../screens/profile_screen.dart';
+import 'shop_state.dart';
 
 class ShopCubit extends Cubit<ShopStates>{
   ShopCubit():super(ShopInitialState());

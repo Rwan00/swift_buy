@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:swift_buy_/cubits/shop_cubit/shop_cubit.dart';
-import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
-import 'package:swift_buy_/theme/body_theme.dart';
+
+import '../cubits/shop_cubit/shop_cubit.dart';
+import '../cubits/shop_cubit/shop_state.dart';
+import '../theme/body_theme.dart';
+
 
 class ShopLayout extends StatelessWidget {
   const ShopLayout({super.key});
@@ -19,9 +21,9 @@ class ShopLayout extends StatelessWidget {
             title: const Text(
               "Explore",
             ),
-            actions: [
+            actions: const [
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
 
               ),
             ],

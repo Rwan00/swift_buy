@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swift_buy_/cubits/shop_cubit/shop_cubit.dart';
-import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
 
-import 'package:swift_buy_/helper/cache_helper.dart';
 
-import 'package:swift_buy_/screens/shop_layout.dart';
-import 'package:swift_buy_/screens/on_boarding.dart';
-import 'package:swift_buy_/screens/sign_screen.dart';
 import 'cubits/bloc_observer.dart';
+import 'cubits/shop_cubit/shop_cubit.dart';
+import 'cubits/shop_cubit/shop_state.dart';
+import 'helper/cache_helper.dart';
 import 'helper/dio_helper.dart';
 import 'helper/end_points.dart';
+import 'screens/on_boarding.dart';
+import 'screens/shop_layout.dart';
+import 'screens/sign_screen.dart';
 import 'theme/body_theme.dart';
 import 'widgets/splash_screen.dart';
 

@@ -1,4 +1,6 @@
-import 'package:swift_buy_/models/login_model.dart';
+
+
+import '../../models/login_model.dart';
 
 abstract class ShopLoginState {}
 

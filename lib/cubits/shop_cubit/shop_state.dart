@@ -1,4 +1,6 @@
-import 'package:swift_buy_/models/favorites_model.dart';
+
+
+import '../../models/favorites_model.dart';
 
 abstract class ShopStates{}
 

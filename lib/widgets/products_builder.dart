@@ -1,19 +1,20 @@
+
+
+
 import 'package:carousel_slider/carousel_slider.dart';
-
-
 import 'package:flutter/material.dart';
 
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swift_buy_/cubits/shop_cubit/shop_cubit.dart';
-import 'package:swift_buy_/cubits/shop_cubit/shop_state.dart';
-import 'package:swift_buy_/models/home_model.dart';
-import 'package:swift_buy_/theme/body_theme.dart';
 
-import 'package:swift_buy_/widgets/product_item.dart';
 
+import '../cubits/shop_cubit/shop_cubit.dart';
+import '../cubits/shop_cubit/shop_state.dart';
 import '../methods/methods.dart';
+import '../models/home_model.dart';
+import '../theme/body_theme.dart';
 import 'bottom_sheet_body.dart';
+import 'product_item.dart';
 
 class ProductsBuilder extends StatelessWidget {
   final HomeModel model;

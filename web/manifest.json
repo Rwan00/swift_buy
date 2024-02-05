@@ -1,6 +1,6 @@
 {
-    "name": "swift_buy_",
-    "short_name": "swift_buy_",
+    "name": "swift_buy",
+    "short_name": "swift_buy",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

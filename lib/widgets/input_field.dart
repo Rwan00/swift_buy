@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swift_buy_/cubits/sign_cubit/sign_cubit.dart';
-import 'package:swift_buy_/cubits/sign_cubit/sign_state.dart';
 
+
+import '../cubits/sign_cubit/sign_cubit.dart';
+import '../cubits/sign_cubit/sign_state.dart';
 import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:swift_buy_/helper/cache_helper.dart';
 
+
+import '../helper/cache_helper.dart';
 import '../methods/methods.dart';
 import '../models/onboarding_model.dart';
 import '../theme/body_theme.dart';
@@ -24,7 +25,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     var boardController = PageController();
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         actions: [
           TextButton(
               onPressed: () {

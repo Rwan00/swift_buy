@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:swift_buy_/theme/body_theme.dart';
+
+import '../theme/body_theme.dart';
+
 
 class Divide extends StatelessWidget {
   const Divide({super.key});
