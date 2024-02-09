@@ -7,6 +7,7 @@ import 'package:page_transition/page_transition.dart';
 import '../cubits/sign_cubit/sign_cubit.dart';
 import '../cubits/sign_cubit/sign_state.dart';
 import '../helper/cache_helper.dart';
+import '../helper/end_points.dart';
 import '../methods/methods.dart';
 import '../screens/shop_layout.dart';
 import '../theme/body_theme.dart';
@@ -31,6 +32,7 @@ class LoginWidget extends StatelessWidget {
             CacheHelper.saveData(
                     key: "token", value: state.loginModel.data!.token)
                 .then((value) {
+                  token = CacheHelper.getData(key: "token");
               animatedNavigateAndDelete(
                   context: context,
                   widget: const ShopLayout(),

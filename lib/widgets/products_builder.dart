@@ -46,12 +46,12 @@ class ProductsBuilder extends StatelessWidget {
                     //margin: const EdgeInsets.symmetric(horizontal: 10),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
-                      child: FadeInImage(
+                      child:  FadeInImage(
                           placeholder:
                               const AssetImage("assets/images/sign.jpg"),
                           image: NetworkImage(
                             element.image,
-                          )),
+                          ),),
                     ),
                   );
                 }).toList(),

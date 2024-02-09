@@ -26,7 +26,7 @@ void main() async {
   if (onBoarding) {
     token = CacheHelper.getData(key: "token");
     print(token);
-    widget =  const ShopLayout() ;
+     widget = token != null ? const ShopLayout() : const SignScreen();
   } else {
     widget = const OnBoardingScreen();
   }
