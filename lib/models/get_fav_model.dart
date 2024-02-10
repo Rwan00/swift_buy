@@ -1,11 +1,11 @@
-class GetFaModel {
+class GetFavModel {
   final bool status;
   final FavData data;
 
-  GetFaModel({required this.status, required this.data});
+  GetFavModel({required this.status, required this.data});
 
-  factory GetFaModel.fromJson(Map<String,dynamic> json){
-    return GetFaModel(
+  factory GetFavModel.fromJson(Map<String,dynamic> json){
+    return GetFavModel(
         status: json["status"],
         data: FavData.fromJson(json["data"]),
     );

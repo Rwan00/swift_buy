@@ -40,25 +40,25 @@ class ShopCubit extends Cubit<ShopStates>{
     BottomNavigationBarItem(
         icon: Icon(
           Icons.home_outlined,
-          size: 24,
+          size: 26,
         ),
         label: ''),
     BottomNavigationBarItem(
         icon: Icon(
           Icons.favorite_border,
-          size: 24,
+          size: 26,
         ),
         label: ''),
     BottomNavigationBarItem(
         icon: Icon(
           Icons.notifications_none_outlined,
-          size: 24,
+          size: 26,
         ),
         label: ''),
     BottomNavigationBarItem(
         icon: Icon(
           Icons.person_outline_sharp,
-          size: 24,
+          size: 26,
         ),
         label: ''),
   ];
@@ -66,6 +66,7 @@ class ShopCubit extends Cubit<ShopStates>{
 
   HomeModel? homeModel;
   Map<int,bool> favorites = {};
+  bool allFalse = true;
 
   void getHomeData(){
 
@@ -82,8 +83,17 @@ class ShopCubit extends Cubit<ShopStates>{
         favorites.addAll({
           element.id:element.isFav
         });
+
       });
       print(favorites.toString());
+      for (var value in favorites.values) {
+        if (value != false) {
+          allFalse = false;
+          break;
+        }else{
+          allFalse = true;
+        }
+      }
       emit(ShopSuccessHomeDataState());
     }).catchError((error){
       print(error.toString());
@@ -122,6 +132,17 @@ class ShopCubit extends Cubit<ShopStates>{
       print(value.data);
       if(!favModel!.status){
         favorites[productId] = !favorites[productId]!;
+      }else{
+        getFavData();
+      }
+      for (var value in favorites.values) {
+        if (value != false) {
+          allFalse = false;
+          break;
+        }
+        else{
+          allFalse = true;
+        }
       }
       emit(ShopSuccessChangeFavouritesState(favModel: favModel!));
     }).catchError((error){
@@ -131,14 +152,16 @@ class ShopCubit extends Cubit<ShopStates>{
     });
   }
 
-  GetFaModel? getFavModel;
+  GetFavModel? getFavModel;
+
   void getFavData(){
+    emit(ShopLoadingGetFavState());
     DioHelper.getData(
         url: FAVORITES,
         token: token
     ).then((value) {
-      getFavModel = GetFaModel.fromJson(value.data);
-      print(value.data.toString());
+      getFavModel = GetFavModel.fromJson(value.data);
+
       emit(ShopSuccessGetFavState());
     }).catchError((error){
       print(error);

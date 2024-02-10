@@ -38,7 +38,7 @@ class ShopLayout extends StatelessWidget {
                   height: 18,
                   width: 25,
                   colorFilter:  ColorFilter.mode(
-                      lightPurple, BlendMode.srcATop),
+                      sPurple, BlendMode.srcATop),
                 ),
               ),
             ),
@@ -51,7 +51,6 @@ class ShopLayout extends StatelessWidget {
               child: const Icon(Icons.shopping_bag_outlined),
             ),
             bottomNavigationBar: Container(
-
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(30), topLeft: Radius.circular(30)),
@@ -65,6 +64,7 @@ class ShopLayout extends StatelessWidget {
                   topRight: Radius.circular(30.0),
                 ),
                 child: BottomAppBar(
+                  padding: EdgeInsets.all(8),
                   clipBehavior: Clip.hardEdge,
                   shape: const CircularNotchedRectangle(),
                   notchMargin: 8,

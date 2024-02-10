@@ -165,7 +165,7 @@ class ProductsBuilder extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     itemCount: model.data.products.length,
                     itemBuilder: (ctx, index) {
-                      return  ProductItem(model: model.data.products[index],isFav:cubit.favorites[model.data.products[index].id]!);
+                      return  ProductItem(model: model.data.products[index],isFav:cubit.favorites[model.data.products[index].id]!,);
                     }),
               ),
             ],

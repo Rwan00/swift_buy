@@ -15,6 +15,7 @@ class ShopSuccessCategoriesState extends ShopStates{}
 class ShopErrorCategoriesState extends ShopStates{}
 
 class ShopSuccessGetFavState extends ShopStates{}
+class ShopLoadingGetFavState extends ShopStates{}
 class ShopErrorGetFavState extends ShopStates{}
 
 

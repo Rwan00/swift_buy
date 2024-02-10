@@ -2,7 +2,6 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../cubits/shop_cubit/shop_cubit.dart';
 import '../cubits/shop_cubit/shop_state.dart';
 import '../widgets/products_builder.dart';
@@ -20,7 +19,7 @@ class HomeScreen extends StatelessWidget {
         return ConditionalBuilder(
             condition: cubit.homeModel != null && cubit.categoriesModel != null,
             builder: (context) =>  ProductsBuilder(model: cubit.homeModel!,),
-            fallback: (context)=> const Center(child: CircularProgressIndicator(),)
+            fallback: (context)=>  Center(child: Image.asset("assets/images/loading.gif",height: 95,width: 95,),)
         );
         },
         );

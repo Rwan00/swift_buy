@@ -6,6 +6,7 @@ import 'fonts.dart';
 Color primaryPurple = const Color.fromRGBO(185, 104, 199, 1);
 Color lightPurple = const Color.fromRGBO(177, 155, 217,1);
 Color primaryDeepPurple = const Color.fromARGB(255, 45, 1, 51);
+Color sPurple = Color.fromARGB(255, 108, 22, 75);
 class BodyTheme {
   static final light = ThemeData(
     scaffoldBackgroundColor: Colors.grey[200],
@@ -13,7 +14,8 @@ class BodyTheme {
     bottomNavigationBarTheme:  BottomNavigationBarThemeData(
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: lightPurple,
+        selectedItemColor: sPurple,
+
       elevation: 16,
     ),
     appBarTheme: AppBarTheme(

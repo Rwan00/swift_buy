@@ -9,7 +9,7 @@ import '../theme/fonts.dart';
 import 'divide.dart';
 
 class ProductItem extends StatelessWidget {
-  final ProductModel model;
+  final dynamic model;
   final bool isFav;
 
   const ProductItem({required this.model, required this.isFav, super.key});
