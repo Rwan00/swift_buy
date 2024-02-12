@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:swift_buy/widgets/info_body.dart';
 
 import '../../helper/dio_helper.dart';
 import '../../helper/end_points.dart';
@@ -22,13 +23,27 @@ class ShopCubit extends Cubit<ShopStates>{
 
   int currentIndex = 0;
 
-  List<Widget> bottomScreen = [
-    const HomeScreen(),
-    const FavouriteScreen(),
-    const NotificationScreen(),
-    const ProfileScreen(),
+    List<Map<String, dynamic>> bottomScreen =
+  [
+  {
+    "page" : const HomeScreen(),
+    "title" : "Explore",
+  },
+  {
+    "page" : const FavouriteScreen(),
+       "title" : "Favourite",
+  },
+  {
+   "page" :  const NotificationScreen(),
+      "title" : "Notifications",
+  },
+  {
+     "page" : const ProfileScreen(),
+         "title" : "My Profile",
+  },
   ];
 
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
 
   void changeBottom(int index){
@@ -184,4 +199,6 @@ class ShopCubit extends Cubit<ShopStates>{
     angle = isTapped ?4.71238898038469: 0;
     emit(ShopRotateState());
   }
+
+
 }

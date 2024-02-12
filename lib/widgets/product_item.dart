@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../cubits/shop_cubit/shop_cubit.dart';
 import '../cubits/shop_cubit/shop_state.dart';
-import '../models/home_model.dart';
 import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 import 'divide.dart';

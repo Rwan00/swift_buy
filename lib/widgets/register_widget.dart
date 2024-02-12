@@ -14,6 +14,7 @@ class RegisterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
     return  Container(
@@ -69,6 +70,11 @@ class RegisterWidget extends StatelessWidget {
                 textType: TextInputType.visiblePassword,
                 isPassword: true,
                 controller: confirmPasswordController,
+              ),
+              InputField(
+                title: "Phone",
+                hint: '+20*****',
+                controller: phoneController,
               ),
             ],
           ),

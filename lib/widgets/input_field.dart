@@ -73,7 +73,7 @@ class InputField extends StatelessWidget {
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: lightPurple,
+                              color: Colors.grey,
                               style: BorderStyle.solid,
                               width: 1,
                             )),
@@ -81,7 +81,7 @@ class InputField extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
                               color: primaryDeepPurple,
-                              width: 1,
+                              width: 2,
                             )),
                       ),
                     ),

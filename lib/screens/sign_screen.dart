@@ -1,9 +1,5 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-
 
 import '../cubits/sign_cubit/sign_cubit.dart';
 import '../cubits/sign_cubit/sign_state.dart';
@@ -26,14 +22,17 @@ class SignScreen extends StatelessWidget {
               body: Column(
                 //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(
-                    height: 32,
-                  ),
+                  /*const SizedBox(
+                    height: 24,
+                  ),*/
                   Center(
-                      child: Image.asset(
-                    "assets/images/logo.png",
-                    height: 190,
-                  )),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Image.asset(
+                                            "assets/images/logo.png",
+                                            height: 190,
+                                          ),
+                      )),
                   Expanded(
                     child: Center(
                       child: SingleChildScrollView(

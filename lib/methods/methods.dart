@@ -9,8 +9,11 @@ import '../theme/fonts.dart';
 void navigateTo(context, widget) =>
     Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
 
-void animatedNavigateTo(BuildContext context, Widget widget,
-    PageTransitionType direction, Curve curve) {
+void animatedNavigateTo(
+    {required BuildContext context,
+    required Widget widget,
+    required PageTransitionType direction,
+    required Curve curve}) {
   Navigator.push(
       context,
       PageTransition(

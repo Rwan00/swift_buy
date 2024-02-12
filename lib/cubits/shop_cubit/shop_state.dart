@@ -31,3 +31,4 @@ class ShopSuccessFavouriteState extends ShopStates{}
 class ShopChangeVisibilityState extends ShopStates{}
 
 class ShopRotateState extends ShopStates{}
+

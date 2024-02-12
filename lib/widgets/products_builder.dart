@@ -3,10 +3,8 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:swift_buy/theme/fonts.dart';
 
 import '../cubits/shop_cubit/shop_cubit.dart';
 import '../cubits/shop_cubit/shop_state.dart';
@@ -39,6 +37,102 @@ class ProductsBuilder extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              Row(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        "Hello,User!",
+                        style: heading.copyWith(fontSize: 24),
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      AnimatedOpacity(
+                        opacity: (cubit.visible == true ? 0 : 1),
+                        duration: const Duration(seconds: 2),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: CircleAvatar(
+                                backgroundColor: primaryDeepPurple,
+                                radius: 16,
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.search,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                      backgroundColor: Colors.grey[300],
+                                      context: context,
+                                      builder: (context) {
+                                        return const BottomSheetBody();
+                                      });
+                                },
+                                child: CircleAvatar(
+                                  backgroundColor: primaryDeepPurple,
+                                  radius: 16,
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.category_outlined,
+                                      color: Colors.white,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          cubit.changeVisibility();
+                          cubit.rotate();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: TweenAnimationBuilder<double>(
+                            curve: Curves.easeInCubic,
+                            duration: const Duration(seconds: 1),
+                            tween: Tween(begin: 0, end: cubit.angle),
+                            builder: (_, angle, child) => Transform.rotate(
+                              angle: angle,
+                              child: child,
+                            ),
+                            child: CircleAvatar(
+                              backgroundColor: primaryDeepPurple,
+                              radius: 16,
+                              child: const Center(
+                                child: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.white,
+                                  size: 24,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
               CarouselSlider(
                 items: model.data.banners.map((element) {
                   return SizedBox(
@@ -63,94 +157,9 @@ class ProductsBuilder extends StatelessWidget {
                     autoPlayInterval: const Duration(seconds: 4),
                     autoPlayCurve: Curves.easeInOutBack),
               ),
+
               const SizedBox(
-                height: 30,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    AnimatedOpacity(
-                      opacity: (cubit.visible == true ? 0 : 1),
-                      duration: const Duration(seconds: 2),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: CircleAvatar(
-                              backgroundColor: primaryDeepPurple,
-                              radius: 22,
-                              child: const Center(
-                                child: Icon(
-                                  Icons.search,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                showModalBottomSheet(
-                                  backgroundColor: Colors.grey[300],
-                                    context: context,
-                                    builder: (context) {
-                                      return const BottomSheetBody();
-                                    });
-                              },
-                              child: CircleAvatar(
-                                backgroundColor: primaryDeepPurple,
-                                radius: 22,
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.category_outlined,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        cubit.changeVisibility();
-                        cubit.rotate();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: TweenAnimationBuilder<double>(
-                          curve: Curves.easeInCubic,
-                          duration: const Duration(seconds: 1),
-                          tween: Tween(begin: 0, end: cubit.angle),
-                          builder: (_, angle, child) => Transform.rotate(
-                            angle: angle,
-                            child: child,
-                          ),
-                          child: CircleAvatar(
-                            backgroundColor: primaryDeepPurple,
-                            radius: 25,
-                            child: const Center(
-                              child: Icon(
-                                Icons.more_vert,
-                                color: Colors.white,
-                                size: 35,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
+                height: 32,
               ),
               Expanded(
                 child: GridView.builder(
