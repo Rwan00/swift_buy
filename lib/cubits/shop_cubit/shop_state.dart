@@ -1,38 +1,49 @@
-
+import 'package:swift_buy/models/login_model.dart';
 
 import '../../models/favorites_model.dart';
 
-abstract class ShopStates{}
+abstract class ShopStates {}
 
-class ShopInitialState extends ShopStates{}
-class ShopChangeBottomNavState extends ShopStates{}
+class ShopInitialState extends ShopStates {}
 
-class ShopLoadingHomeDataState extends ShopStates{}
-class ShopSuccessHomeDataState extends ShopStates{}
-class ShopErrorHomeDataState extends ShopStates{}
+class ShopChangeBottomNavState extends ShopStates {}
 
-class ShopSuccessCategoriesState extends ShopStates{}
-class ShopErrorCategoriesState extends ShopStates{}
+class ShopLoadingHomeDataState extends ShopStates {}
 
-class ShopSuccessGetFavState extends ShopStates{}
-class ShopLoadingGetFavState extends ShopStates{}
-class ShopErrorGetFavState extends ShopStates{}
+class ShopSuccessHomeDataState extends ShopStates {}
 
-class ShopSuccessUserDataState extends ShopStates{}
-class ShopLoadingUserDataState extends ShopStates{}
-class ShopErrorUserDataState extends ShopStates{}
+class ShopErrorHomeDataState extends ShopStates {}
 
+class ShopSuccessCategoriesState extends ShopStates {}
 
+class ShopErrorCategoriesState extends ShopStates {}
 
-class ShopSuccessChangeFavouritesState extends ShopStates{
+class ShopSuccessGetFavState extends ShopStates {}
+
+class ShopLoadingGetFavState extends ShopStates {}
+
+class ShopErrorGetFavState extends ShopStates {}
+
+class ShopSuccessUserDataState extends ShopStates {
+  final ShopLoginModel userModel;
+
+  ShopSuccessUserDataState({required this.userModel});
+  
+}
+
+class ShopLoadingUserDataState extends ShopStates {}
+
+class ShopErrorUserDataState extends ShopStates {}
+
+class ShopSuccessChangeFavouritesState extends ShopStates {
   final ChangeFavoritesModel favModel;
   ShopSuccessChangeFavouritesState({required this.favModel});
 }
-class ShopErrorChangeFavouritesState extends ShopStates{}
 
-class ShopSuccessFavouriteState extends ShopStates{}
+class ShopErrorChangeFavouritesState extends ShopStates {}
 
-class ShopChangeVisibilityState extends ShopStates{}
+class ShopSuccessFavouriteState extends ShopStates {}
 
-class ShopRotateState extends ShopStates{}
+class ShopChangeVisibilityState extends ShopStates {}
 
+class ShopRotateState extends ShopStates {}

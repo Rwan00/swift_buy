@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:page_transition/page_transition.dart';
+import 'package:swift_buy/helper/cache_helper.dart';
 
 
+import '../screens/sign_screen.dart';
 import '../theme/fonts.dart';
 
 void navigateTo(context, widget) =>
@@ -60,5 +62,18 @@ void animatedNavigateAndDelete(
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
     return snackBar;
+  }
+
+  void signOut(context){
+    CacheHelper.removeData(key: "token").then((value){
+      if(value!){
+        animatedNavigateAndDelete(
+          context: context,
+           widget: const SignScreen(),
+            curve: Curves.easeInCirc,
+             direction: PageTransitionType.fade,
+             );
+      }
+    });
   }
 
