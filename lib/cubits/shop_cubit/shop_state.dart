@@ -18,6 +18,10 @@ class ShopSuccessGetFavState extends ShopStates{}
 class ShopLoadingGetFavState extends ShopStates{}
 class ShopErrorGetFavState extends ShopStates{}
 
+class ShopSuccessUserDataState extends ShopStates{}
+class ShopLoadingUserDataState extends ShopStates{}
+class ShopErrorUserDataState extends ShopStates{}
+
 
 
 class ShopSuccessChangeFavouritesState extends ShopStates{

@@ -28,7 +28,7 @@ class LoginWidget extends StatelessWidget {
         if(state is ShopLoginSuccessState){
            if(state.loginModel.status){
              print(state.loginModel.message);
-            buildSnackBar(context: context,text:  state.loginModel.message,clr:  primaryDeepPurple);
+            buildSnackBar(context: context,text:  state.loginModel.message!,clr:  primaryDeepPurple);
             CacheHelper.saveData(
                     key: "token", value: state.loginModel.data!.token)
                 .then((value) {
@@ -41,7 +41,7 @@ class LoginWidget extends StatelessWidget {
             });
           }
            else{
-             buildSnackBar(context:  context,text:  state.loginModel.message,
+             buildSnackBar(context:  context,text:  state.loginModel.message!,
                clr:  const Color.fromARGB(255, 92, 1, 1));
           }
         }
