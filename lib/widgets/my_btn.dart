@@ -3,11 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../theme/body_theme.dart';
 
-
 class AppBtn extends StatelessWidget {
   final void Function()? onPressed;
   final String label;
-  const AppBtn({required this.label,required this.onPressed,super.key});
+  final Color? clr ;
+   const AppBtn({required this.label, required this.onPressed,this.clr, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,12 @@ class AppBtn extends StatelessWidget {
                 MaterialStateProperty.all(GoogleFonts.raleway(fontSize: 16)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(16.0), 
+                borderRadius: BorderRadius.circular(16.0),
               ),
             ),
-            backgroundColor: MaterialStateProperty.all(primaryDeepPurple.withOpacity(0.6))),
-        child:  Text(label,));
+            backgroundColor: MaterialStateProperty.all(clr ?? primaryDeepPurple.withOpacity(0.6))),
+        child: Text(
+          label,
+        ));
   }
 }

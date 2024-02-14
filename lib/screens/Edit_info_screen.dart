@@ -5,11 +5,12 @@ import 'package:swift_buy/models/login_model.dart';
 import 'package:swift_buy/widgets/my_btn.dart';
 
 import '../cubits/shop_cubit/shop_cubit.dart';
+import '../methods/methods.dart';
 import '../widgets/input_field.dart';
 
 class EditInfoScreen extends StatelessWidget {
   final ShopLoginModel userData;
-  const EditInfoScreen({required this.userData,super.key});
+  const EditInfoScreen({required this.userData, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +24,9 @@ class EditInfoScreen extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = ShopCubit.get(context);
-           usernameController.text = userData.data!.name!;
-           emailController.text = userData.data!.email!;
-           phoneController.text = userData.data!.phone!;
+          usernameController.text = userData.data!.name!;
+          emailController.text = userData.data!.email!;
+          phoneController.text = userData.data!.phone!;
           print(userData.data!.name);
           return Scaffold(
             appBar: AppBar(
@@ -68,6 +69,18 @@ class EditInfoScreen extends StatelessWidget {
                     child: AppBtn(
                       label: "Save",
                       onPressed: () {},
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    width: 120,
+                    height: 42,
+                    child: AppBtn(
+                      clr: const Color.fromARGB(255, 118, 3, 3),
+                      label: "Log Out",
+                      onPressed: () => buildDialog(context),
                     ),
                   ),
                 ],

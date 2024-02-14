@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-
 import '../helper/cache_helper.dart';
 import '../methods/methods.dart';
 import '../models/onboarding_model.dart';
@@ -34,15 +33,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 CacheHelper.saveData(key: "onBoarding", value: true)
                     .then((value) {
                   if (value == true) {
-                    animatedNavigateAndDelete(context: context, widget: const SignScreen(),
-                       direction:  PageTransitionType.leftToRight, curve:Curves.easeInOutCirc);
+                    animatedNavigateAndDelete(
+                        context: context,
+                        widget: const SignScreen(),
+                        direction: PageTransitionType.leftToRight,
+                        curve: Curves.easeInOutCirc);
                   }
                 });
               },
               child: Text(
                 "SKIP",
                 style: GoogleFonts.raleway(
-                  color: primaryPurple,
+                  color: primaryDeepPurple,
                   decoration: TextDecoration.underline,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -84,7 +86,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 effect: JumpingDotEffect(
                     verticalOffset: 20,
                     jumpScale: 1.6,
-                    activeDotColor: primaryPurple,
+                    activeDotColor: primaryDeepPurple,
                     dotWidth: 24,
                     dotHeight: 8),
               ),
@@ -92,18 +94,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               FloatingActionButton(
                 onPressed: () {
                   isLast
-                      ?  CacheHelper.saveData(key: "onBoarding", value: true)
-                      .then((value) {
-                    if (value == true) {
-                      animatedNavigateAndDelete(context: context, widget: const SignScreen(),
-                          direction:  PageTransitionType.leftToRight, curve:Curves.easeInOutCirc);
-                    }
-                  })
+                      ? CacheHelper.saveData(key: "onBoarding", value: true)
+                          .then((value) {
+                          if (value == true) {
+                            animatedNavigateAndDelete(
+                                context: context,
+                                widget: const SignScreen(),
+                                direction: PageTransitionType.leftToRight,
+                                curve: Curves.easeInOutCirc);
+                          }
+                        })
                       : boardController.nextPage(
                           duration: const Duration(milliseconds: 900),
                           curve: Curves.easeInOutBack);
                 },
-                backgroundColor: primaryPurple,
+                backgroundColor: primaryDeepPurple.withOpacity(0.6),
                 child: const Icon(
                   Icons.arrow_forward,
                   color: Colors.white,
