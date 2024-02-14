@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         builder: (context,state){
           var cubit = ShopCubit.get(context);
         return ConditionalBuilder(
-            condition: cubit.homeModel != null && cubit.categoriesModel != null,
+            condition: cubit.homeModel != null && cubit.categoriesModel != null && cubit.userModel != null,
             builder: (context) =>  ProductsBuilder(model: cubit.homeModel!,),
             fallback: (context)=>  Center(child: Image.asset("assets/images/loading.gif",height: 95,width: 95,),)
         );

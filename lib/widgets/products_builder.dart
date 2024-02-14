@@ -44,7 +44,7 @@ class ProductsBuilder extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        "Hello,User!",
+                        "Hello,${cubit.userModel!.data!.name}!",
                         style: heading.copyWith(fontSize: 24),
                       ),
                     ),

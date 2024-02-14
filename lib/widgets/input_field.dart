@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
+import '../cubits/shop_cubit/shop_cubit.dart';
 import '../cubits/sign_cubit/sign_cubit.dart';
 import '../cubits/sign_cubit/sign_state.dart';
 import '../theme/body_theme.dart';
@@ -26,8 +27,11 @@ class InputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ShopLoginCubit(),
+    return MultiBlocProvider(
+      providers: [
+      BlocProvider ( create: (context) => ShopLoginCubit(),),
+      BlocProvider ( create: (context) => ShopCubit(),),
+      ],
       child: BlocConsumer<ShopLoginCubit, ShopLoginState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -72,7 +76,7 @@ class InputField extends StatelessWidget {
                         hintStyle: subTitle,
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.grey,
                               style: BorderStyle.solid,
                               width: 1,

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swift_buy/cubits/shop_cubit/shop_state.dart';
+import 'package:swift_buy/models/login_model.dart';
 import 'package:swift_buy/widgets/my_btn.dart';
 
+import '../cubits/shop_cubit/shop_cubit.dart';
 import '../widgets/input_field.dart';
 
 class EditInfoScreen extends StatelessWidget {
-  const EditInfoScreen({super.key});
+  final ShopLoginModel userData;
+  const EditInfoScreen({required this.userData,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,50 +17,64 @@ class EditInfoScreen extends StatelessWidget {
     TextEditingController emailController = TextEditingController();
     TextEditingController phoneController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Edit"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            InputField(
-              title: 'User Name',
-              hint: 'Enter Your Name',
-              controller: usernameController,
+    return BlocProvider(
+      create: (context) => ShopCubit(),
+      child: BlocConsumer<ShopCubit, ShopStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var cubit = ShopCubit.get(context);
+           usernameController.text = userData.data!.name;
+           emailController.text = userData.data!.email;
+           phoneController.text = userData.data!.phone;
+          print(userData.data!.name);
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text("Edit"),
             ),
-            InputField(
-              title: 'Email Address',
-              hint: 'xyz@gmail.com',
-              controller: emailController,
+            body: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  InputField(
+                    title: 'User Name',
+                    hint: 'Enter Your Name',
+                    controller: usernameController,
+                  ),
+                  InputField(
+                    title: 'Email Address',
+                    hint: 'xyz@gmail.com',
+                    controller: emailController,
+                  ),
+                  InputField(
+                    title: 'Password',
+                    hint: '******',
+                    widget: const Icon(Icons.remove_red_eye_outlined),
+                    textType: TextInputType.visiblePassword,
+                    isPassword: true,
+                    controller: passwordController,
+                  ),
+                  InputField(
+                    title: "Phone",
+                    hint: '+20*****',
+                    controller: phoneController,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  SizedBox(
+                    width: 120,
+                    height: 42,
+                    child: AppBtn(
+                      label: "Save",
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
+              ),
             ),
-            InputField(
-              title: 'Password',
-              hint: '******',
-              widget: const Icon(Icons.remove_red_eye_outlined),
-              textType: TextInputType.visiblePassword,
-              isPassword: true,
-              controller: passwordController,
-            ),
-
-            InputField(
-              title: "Phone",
-              hint: '+20*****',
-              controller: phoneController,
-            ),
-            const SizedBox(height: 24,),
-            SizedBox(
-              width: 120,
-                height: 42,
-                child: AppBtn(
-                    label: "Save",
-                    onPressed: (){},
-                ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
