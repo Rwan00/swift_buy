@@ -23,9 +23,9 @@ class EditInfoScreen extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = ShopCubit.get(context);
-           usernameController.text = userData.data!.name;
-           emailController.text = userData.data!.email;
-           phoneController.text = userData.data!.phone;
+           usernameController.text = userData.data!.name!;
+           emailController.text = userData.data!.email!;
+           phoneController.text = userData.data!.phone!;
           print(userData.data!.name);
           return Scaffold(
             appBar: AppBar(

@@ -33,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
                           CircleAvatar(
                             backgroundColor: primaryDeepPurple,
                             backgroundImage:
-                                NetworkImage(cubit.userModel!.data!.image),
+                                NetworkImage(cubit.userModel!.data!.image!),
                             radius: 72,
                           ),
                           CircleAvatar(
@@ -63,15 +63,15 @@ class ProfileScreen extends StatelessWidget {
                             children: [
                               InfoContainer(
                                 label: 'UserName',
-                                content: cubit.userModel!.data!.name,
+                                content: cubit.userModel!.data!.name!,
                               ),
                               InfoContainer(
                                 label: 'Email',
-                                content: cubit.userModel!.data!.email,
+                                content: cubit.userModel!.data!.email!,
                               ),
                               InfoContainer(
                                 label: 'Phone',
-                                content: cubit.userModel!.data!.phone,
+                                content: cubit.userModel!.data!.phone!,
                               ),
                               const InfoContainer(
                                 label: 'Location',

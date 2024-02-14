@@ -122,7 +122,13 @@ class LoginWidget extends StatelessWidget {
                       },
                     ),
                     fallback: (context) =>
-                        const Center(child: CircularProgressIndicator()),
+                        Center(
+                child: Image.asset(
+                  "assets/images/loading.gif",
+                  height: 95,
+                  width: 95,
+                ),
+              ),
                   ),
                 ),
                 Row(
