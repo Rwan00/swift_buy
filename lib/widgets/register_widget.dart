@@ -119,6 +119,7 @@ class RegisterWidget extends StatelessWidget {
                       title: "Phone",
                       hint: '+20*****',
                       controller: phoneController,
+                      textType: TextInputType.phone,
                     ),
                   ],
                 ),

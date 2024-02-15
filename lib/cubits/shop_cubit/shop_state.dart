@@ -35,6 +35,17 @@ class ShopLoadingUserDataState extends ShopStates {}
 
 class ShopErrorUserDataState extends ShopStates {}
 
+class ShopSuccessUpdateUserState extends ShopStates {
+  final ShopLoginModel userModel;
+
+  ShopSuccessUpdateUserState({required this.userModel});
+  
+}
+
+class ShopLoadingUpdateUserState extends ShopStates {}
+
+class ShopErrorUpdateUserState extends ShopStates {}
+
 class ShopSuccessChangeFavouritesState extends ShopStates {
   final ChangeFavoritesModel favModel;
   ShopSuccessChangeFavouritesState({required this.favModel});
