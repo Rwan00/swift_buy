@@ -9,16 +9,16 @@ import 'divide.dart';
 
 class ProductItem extends StatelessWidget {
   final dynamic model;
-  final bool isFav;
+  final bool? isFav;
+  final bool? isSearch;
 
-  const ProductItem({required this.model, required this.isFav, super.key});
+  const ProductItem(
+      {required this.model, this.isFav, this.isSearch, super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopStates>(
-      listener: (context, state) {
-
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         var cubit = ShopCubit.get(context);
         return Padding(
@@ -33,6 +33,7 @@ class ProductItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if(model.discount != 0 && isSearch == null)
                   Container(
                     height: 25,
                     width: 50,
@@ -69,14 +70,16 @@ class ProductItem extends StatelessWidget {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  SizedBox(height: 12,),
                   Row(
                     children: [
-                      Text(
-                        "\$${model.oldPrice.round()}",
-                        style: subTitle.copyWith(
-                          decoration: TextDecoration.lineThrough,
+                      if(model.discount != 0 && isSearch == null)
+                        Text(
+                          "\$${model.oldPrice.round()}",
+                          style: subTitle.copyWith(
+                            decoration: TextDecoration.lineThrough,
+                          ),
                         ),
-                      ),
                       const Spacer(),
                       Text(
                         "\$${model.price.round()}",
@@ -89,18 +92,21 @@ class ProductItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          cubit.changeFavourites(model.id);
-                        },
-                        icon: CircleAvatar(
-                          backgroundColor: Colors.grey[200],
-                          child: Icon(
-                            isFav ? Icons.favorite : Icons.favorite_outline_sharp,
-                            color: primaryDeepPurple,
+                      if (isFav != null)
+                        IconButton(
+                          onPressed: () {
+                            cubit.changeFavourites(model.id);
+                          },
+                          icon: CircleAvatar(
+                            backgroundColor: Colors.grey[200],
+                            child: Icon(
+                              isFav!
+                                  ? Icons.favorite
+                                  : Icons.favorite_outline_sharp,
+                              color: primaryDeepPurple,
+                            ),
                           ),
                         ),
-                      ),
                       const Spacer(),
                       Container(
                         height: 25,
