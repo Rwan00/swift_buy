@@ -9,7 +9,7 @@ import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 
 class InputField extends StatelessWidget {
-  final String title;
+  final String? title;
   final String hint;
   final TextEditingController? controller;
   final Widget? widget;
@@ -17,7 +17,7 @@ class InputField extends StatelessWidget {
   final bool isPassword;
 
   const InputField(
-      {required this.title,
+      { this.title,
       required this.hint,
       this.controller,
       this.widget,
@@ -42,8 +42,9 @@ class InputField extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if(title != null)
                   Text(
-                    title,
+                    title!,
                     style: titleStyle,
                   ),
                   const SizedBox(
