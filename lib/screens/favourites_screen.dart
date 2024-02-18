@@ -50,7 +50,7 @@ class FavouriteScreen extends StatelessWidget {
                     ProductItem(
                       model: favModel,isFav:cubit.favorites[favModel?.id]!,);
                 }),
-            fallback: (context)=>Center(child:CircularProgressIndicator() ,)
+            fallback: (context)=>const Center(child:CircularProgressIndicator() ,)
         );
       },
     );

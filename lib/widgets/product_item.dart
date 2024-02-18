@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../cubits/shop_cubit/shop_cubit.dart';
 import '../cubits/shop_cubit/shop_state.dart';
+import '../methods/methods.dart';
+import '../screens/product_details.dart';
 import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 import 'divide.dart';
@@ -10,10 +13,10 @@ import 'divide.dart';
 class ProductItem extends StatelessWidget {
   final dynamic model;
   final bool? isFav;
-  final bool? isSearch;
+  final bool isSearch;
 
   const ProductItem(
-      {required this.model, this.isFav, this.isSearch, super.key});
+      {required this.model, this.isFav, this.isSearch = false, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +31,10 @@ class ProductItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
               color: Colors.white,
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if(model.discount != 0 && isSearch == null)
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (model.discount != 0 && isSearch == false)
                   Container(
                     height: 25,
                     width: 50,
@@ -50,87 +51,96 @@ class ProductItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: SizedBox(
-                      height: 87,
-                      width: 137,
-                      child: FadeInImage(
-                        placeholder: const AssetImage("assets/images/sign.jpg"),
-                        image: NetworkImage(
-                          model.image,
-                        ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 16.0, horizontal: 8),
+                  child: SizedBox(
+                    height: 87,
+                    width: 137,
+                    child: FadeInImage(
+                      placeholder: const AssetImage("assets/images/sign.jpg"),
+                      image: NetworkImage(
+                        model.image,
                       ),
                     ),
                   ),
-                  const Divide(),
-                  Text(
-                    model.name,
-                    style: subTitle,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: 12,),
-                  Row(
+                ),
+                const Divide(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
                     children: [
-                      if(model.discount != 0 && isSearch == null)
-                        Text(
-                          "\$${model.oldPrice.round()}",
-                          style: subTitle.copyWith(
-                            decoration: TextDecoration.lineThrough,
-                          ),
-                        ),
-                      const Spacer(),
                       Text(
-                        "\$${model.price.round()}",
-                        style: titleStyle,
+                        model.name,
+                        style: subTitle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        children: [
+                          if (model.discount != 0 && isSearch == false)
+                            Text(
+                              "\$${model.oldPrice.round()}",
+                              style: subTitle.copyWith(
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
+                          const Spacer(),
+                          Text(
+                            "\$${model.price.round()}",
+                            style: titleStyle,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  const Spacer(),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      if (isFav != null)
-                        IconButton(
-                          onPressed: () {
-                            cubit.changeFavourites(model.id);
-                          },
-                          icon: CircleAvatar(
-                            backgroundColor: Colors.grey[200],
-                            child: Icon(
-                              isFav!
-                                  ? Icons.favorite
-                                  : Icons.favorite_outline_sharp,
-                              color: primaryDeepPurple,
-                            ),
-                          ),
-                        ),
-                      const Spacer(),
-                      Container(
-                        height: 25,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(70),
-                              bottomRight: Radius.circular(70),
-                            ),
-                            color: primaryDeepPurple),
-                        child: const Center(
+                ),
+                const Spacer(),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (isFav != null)
+                      IconButton(
+                        onPressed: () {
+                          cubit.changeFavourites(model.id);
+                        },
+                        icon: CircleAvatar(
+                          backgroundColor: Colors.grey[200],
                           child: Icon(
-                            Icons.add,
-                            color: Colors.white,
+                            isFav!
+                                ? Icons.favorite
+                                : Icons.favorite_outline_sharp,
+                            color: primaryDeepPurple,
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  )
-                ],
-              ),
+                    const Spacer(),
+                    Container(
+                      height: 25,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(70),
+                            bottomRight: Radius.circular(70),
+                          ),
+                          color: primaryDeepPurple),
+                      child: const Center(
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                /* const SizedBox(
+                  height: 15,
+                ) */
+              ],
             ),
           ),
         );

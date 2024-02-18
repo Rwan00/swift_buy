@@ -38,7 +38,6 @@ class HomeDataModel {
   }
 }
 
-
 class BannerModel {
   final int id;
   final String image;
@@ -59,6 +58,8 @@ class ProductModel {
   final String name;
   final bool isFav;
   final bool inCart;
+  final List<dynamic> images;
+  final String description;
 
   ProductModel({
     required this.id,
@@ -69,6 +70,8 @@ class ProductModel {
     required this.isFav,
     required this.oldPrice,
     required this.price,
+    required this.images,
+    required this.description,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -81,6 +84,8 @@ class ProductModel {
       isFav: json["in_favorites"],
       oldPrice: json["old_price"],
       price: json["price"],
+      images: json["images"],
+      description: json["description"],
     );
   }
 }

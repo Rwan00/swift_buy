@@ -9,6 +9,7 @@ import '../cubits/shop_cubit/shop_cubit.dart';
 import '../cubits/shop_cubit/shop_state.dart';
 import '../methods/methods.dart';
 import '../models/home_model.dart';
+import '../screens/product_details.dart';
 import '../theme/body_theme.dart';
 import 'bottom_sheet_body.dart';
 import 'product_item.dart';
@@ -176,16 +177,30 @@ class ProductsBuilder extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 210,
-                  childAspectRatio: 0.6,
-                  crossAxisSpacing: 1,
-                  mainAxisSpacing: 2,
+                  childAspectRatio: 0.61,
+                  crossAxisSpacing: 0.6,
+                  mainAxisSpacing: 0.6,
                 ),
                 physics: const BouncingScrollPhysics(),
                 itemCount: model.data.products.length,
                 itemBuilder: (ctx, index) {
-                  return ProductItem(
-                    model: model.data.products[index],
-                    isFav: cubit.favorites[model.data.products[index].id]!,
+                  return GestureDetector(
+                    onTap: () {
+                      animatedNavigateTo(
+                        context: context,
+                        widget: ProductDetails(
+                          model: model.data.products[index],
+                          isFav:
+                              cubit.favorites[model.data.products[index].id]!,
+                        ),
+                        direction: PageTransitionType.leftToRight,
+                        curve: Curves.easeInExpo,
+                      );
+                    },
+                    child: ProductItem(
+                      model: model.data.products[index],
+                      isFav: cubit.favorites[model.data.products[index].id]!,
+                    ),
                   );
                 }),
           ),
