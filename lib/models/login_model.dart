@@ -21,7 +21,7 @@ class UserData {
   final String? phone;
   final String? image;
   final int? points;
-  final int? credit;
+  final double? credit;
   final String? token;
 
   UserData({

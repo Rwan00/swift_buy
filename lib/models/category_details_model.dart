@@ -40,15 +40,23 @@ class Product {
   final dynamic discount;
   final String image;
   final String name;
+  final bool isFav;
+  final bool inCart;
+  final List<dynamic> images;
+  final String description;
 
-  Product(
-      {required this.id,
-      required this.oldPrice,
-      required this.price,
-      required this.discount,
-      required this.image,
-      required this.name,
- });
+  Product({
+    required this.id,
+    required this.image,
+    required this.name,
+    required this.discount,
+    required this.inCart,
+    required this.isFav,
+    required this.oldPrice,
+    required this.price,
+    required this.images,
+    required this.description,
+  });
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
@@ -56,8 +64,12 @@ class Product {
       image: json["image"],
       name: json["name"],
       discount: json["discount"],
+      inCart: json["in_cart"],
+      isFav: json["in_favorites"],
       oldPrice: json["old_price"],
       price: json["price"],
+      images: json["images"],
+      description: json["description"],
     );
   }
 }

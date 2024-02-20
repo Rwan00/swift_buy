@@ -38,6 +38,7 @@ class ShopLayout extends StatelessWidget {
               ),
             ),
             body: cubit.bottomScreen[cubit.currentIndex]["page"],
+            
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             floatingActionButton: FloatingActionButton(
