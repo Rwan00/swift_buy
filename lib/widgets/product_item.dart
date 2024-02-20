@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:page_transition/page_transition.dart';
+
 
 import '../cubits/shop_cubit/shop_cubit.dart';
 import '../cubits/shop_cubit/shop_state.dart';
-import '../methods/methods.dart';
-import '../screens/product_details.dart';
+
 import '../theme/body_theme.dart';
 import '../theme/fonts.dart';
 import 'divide.dart';

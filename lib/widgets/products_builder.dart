@@ -187,7 +187,7 @@ class ProductsBuilder extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       animatedNavigateTo(
-                        context: context,
+                        context: ctx,
                         widget: ProductDetails(
                           model: model.data.products[index],
                           isFav:

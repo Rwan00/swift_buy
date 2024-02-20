@@ -127,20 +127,14 @@ class ProductDetails extends StatelessWidget {
                   Row(
                     children: [
                       if (isFav != null)
-                        GestureDetector(
-                          onTap: () {
-                            cubit.changeFavourites(model.id);
-                            
-                          },
-                          child: CircleAvatar(
-                            radius: 24,
-                            backgroundColor: Colors.grey[200],
-                            child: Icon(
-                              isFav!
-                                  ? Icons.favorite
-                                  : Icons.favorite_outline_sharp,
-                              color: primaryDeepPurple,
-                            ),
+                        CircleAvatar(
+                          radius: 24,
+                          backgroundColor: Colors.grey[200],
+                          child: Icon(
+                            isFav!
+                                ? Icons.favorite
+                                : Icons.favorite_outline_sharp,
+                            color: primaryDeepPurple,
                           ),
                         ),
                       const Spacer(),
