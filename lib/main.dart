@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 import 'cubits/bloc_observer.dart';
@@ -30,8 +31,10 @@ void main() async {
   } else {
     widget = const OnBoardingScreen();
   }
-  runApp(MyApp(
-    startWidget: widget,
+  runApp( ProviderScope(
+    child: MyApp(
+      startWidget: widget,
+    ),
   ));
 }
 

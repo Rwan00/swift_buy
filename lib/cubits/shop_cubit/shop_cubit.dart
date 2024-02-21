@@ -11,7 +11,7 @@ import '../../models/get_fav_model.dart';
 import '../../models/home_model.dart';
 import '../../screens/favourites_screen.dart';
 import '../../screens/home_screen.dart';
-import '../../screens/notification_screen.dart';
+import '../../screens/address_screen.dart';
 import '../../screens/profile_screen.dart';
 import 'shop_state.dart';
 
@@ -31,8 +31,8 @@ class ShopCubit extends Cubit<ShopStates> {
       "title": "Favourite",
     },
     {
-      "page": const NotificationScreen(),
-      "title": "Notifications",
+      "page": const AddressScreen(),
+      "title": "Address",
     },
     {
       "page": const ProfileScreen(),
@@ -62,7 +62,7 @@ class ShopCubit extends Cubit<ShopStates> {
         label: ''),
     BottomNavigationBarItem(
         icon: Icon(
-          Icons.notifications_none_outlined,
+          Icons.map,
           size: 26,
         ),
         label: ''),
@@ -248,4 +248,6 @@ class ShopCubit extends Cubit<ShopStates> {
     flag = !flag;
     emit(ShopReadMoreState());
   }
+
+  
 }

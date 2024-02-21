@@ -4,6 +4,8 @@
         android:label="swift_buy"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDWYIwIwT2Cx7maujw2kxbcvbFKhIGhLOE"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

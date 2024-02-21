@@ -45,6 +45,13 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   dio: ^5.4.0
   shared_preferences: ^2.2.2
+  http: ^1.2.0
+  google_maps_flutter: ^2.5.3
+  location: ^5.0.3
+  uuid: ^4.3.3
+  sqflite: ^2.3.2
+  flutter_riverpod: ^2.4.9
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
