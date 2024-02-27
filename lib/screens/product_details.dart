@@ -21,17 +21,6 @@ class ProductDetails extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = ShopCubit.get(context);
-        String? firstHalf;
-        String? secondHalf;
-
-        if (model.description.length > 200) {
-          firstHalf = model.description.substring(0, 200);
-          secondHalf =
-              model.description.substring(200, model.description.length);
-        } else {
-          firstHalf = model.description;
-          secondHalf = "";
-        }
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -92,17 +81,14 @@ class ProductDetails extends StatelessWidget {
                     ),
                   ),
                   imagesList(),
-                  secondHalf!.isEmpty
-                      ? Text(
-                          firstHalf!,
-                          style: subTitle,
-                        )
-                      : Column(
+                  const SizedBox(height: 24,),
+                  Column(
                           children: <Widget>[
                             Text(
-                              cubit.flag
-                                  ? ("${firstHalf!}...")
-                                  : (firstHalf! + secondHalf),
+                              
+                              model.description,
+                              maxLines:cubit.flag? 3 : null,
+                              overflow:cubit.flag? TextOverflow.ellipsis : null,
                               style: subTitle,
                             ),
                             InkWell(
@@ -122,7 +108,7 @@ class ProductDetails extends StatelessWidget {
                           ],
                         ),
                   const SizedBox(
-                    height: 64,
+                    height: 58,
                   ),
                   Row(
                     children: [

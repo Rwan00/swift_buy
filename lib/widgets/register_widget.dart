@@ -28,6 +28,7 @@ class RegisterWidget extends StatelessWidget {
     return BlocConsumer<ShopRegisterCubit, ShopRegisterState>(
       listener: (context, state) {
         if (state is ShopRegisterSuccessState) {
+           
           if (state.loginModel.status && passwordController.text == confirmPasswordController.text) {
             print(state.loginModel.message);
             buildSnackBar(
@@ -44,12 +45,7 @@ class RegisterWidget extends StatelessWidget {
                   direction: PageTransitionType.fade,
                   curve: Curves.easeInOutBack);
             });
-          } else if(passwordController.text != confirmPasswordController.text){
-            buildSnackBar(
-                context: context,
-                text: "Password Dosen't Match",
-                clr: const Color.fromARGB(255, 92, 1, 1));
-          }
+          } 
           else{
             buildSnackBar(
                 context: context,
@@ -135,12 +131,20 @@ class RegisterWidget extends StatelessWidget {
                       return AppBtn(
                         label: "Sign Up",
                         onPressed: () {
-                          cubit.userRegister(
+                          if (passwordController.text !=
+                              confirmPasswordController.text) {
+                            buildSnackBar(
+                                context: context,
+                                text: "Password Dosen't Match",
+                                clr: const Color.fromARGB(255, 92, 1, 1));
+                          } else {
+                            cubit.userRegister(
                             email: emailController.text,
                             password: passwordController.text,
                             name: usernameController.text,
                             phone: phoneController.text,
-                          );
+                            );
+                          }
                         },
                       );
                     },
